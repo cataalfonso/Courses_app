@@ -4,11 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "serve":"node src/index.js"
+    "serve": "node src/index.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "gulp": "^4.0.2"
+    "gulp": "^4.0.2",
+    "uuid": "^8.3.2"
   }
 }

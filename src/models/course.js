@@ -1,10 +1,13 @@
+const Grade = require("./grade");
+
 function Course(){
 
 }
 Course.prototype={
     id: 0,
     nombre: '',
-    duracion: ''
+    duracion: '',
+    grades: []
 }
 
-module.exports= Course;
+module.exports = Course;
