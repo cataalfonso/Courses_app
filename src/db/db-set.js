@@ -21,5 +21,16 @@ class DbSet extends Array{
         return item;
     }
 
+    update(id, object){
+        const index = this.findIndex(item => item.id === id);
+        const item = this.find((_item) => _item.id === id);
+        this.newValue={
+            id: item.id,
+            ...object};
+        this.splice(index, 1, this.newValue);
+        this.hasChanges = true;
+        this.save();
+    }
+
 }
 module.exports = DbSet;

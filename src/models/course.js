@@ -1,13 +1,15 @@
 const Grade = require("./grade");
 
-function Course(){
+class Course {
+
+    constructor(){
+        this.id= 0;
+        this.name= '';
+        this.duration= '';
+        this.grades= new Grade;
+    }
 
 }
-Course.prototype={
-    id: 0,
-    nombre: '',
-    duracion: '',
-    grades: []
-}
+
 
 module.exports = Course;

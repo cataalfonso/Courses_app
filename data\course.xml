@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Items>
+	<item	id="e04d2874-5e26-4d49-aecc-94b0459d08ab"	name="dddd"	duration="5"	grades="[1,2,3]"	/>
+	<item	id="4da1d0df-7c22-4142-b3a8-dbc69899336a"	name="aaaa"	duration="4"	grades="[4,5,6]"	/>
+	<item	id="d07a2289-a276-4cfb-96be-13142dbb1c6f"	name="bbbb"	duration="3"	grades="[3,4,1]"	/>
+</Items>
