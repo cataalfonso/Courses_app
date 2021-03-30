@@ -1,16 +1,15 @@
 const User = require("./user")
 
-function Person(){
+class Person{
 
+    constructor(){
+        this.id= 0;
+        this.firstName= '';
+        this.lastName='';
+        this.user= new User();
+        this.telephone= '';
+        this.adress= '';
+        this.birthDate= new Date();
 }
-Person.prototype={
-    id: 0,
-    nombre: '',
-    apellido:'',
-    usuario: new User(),
-    telefono: '',
-    direccion: '',
-    fechaNacimiento: new Date()
 }
-
 module.exports= Person;

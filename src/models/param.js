@@ -1,9 +1,10 @@
-function Param(){
-}
-Param.prototype = {
-    id: 0,
-    value: '',
-    description: ''
-}
+class Param{
+
+    constructor(){ 
+        this.id=0;
+        this.value='';
+        this.description='';
+    }
+}    
 
 module.exports = Param;

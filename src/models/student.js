@@ -1,12 +1,12 @@
 const Person = require("./person")
 
-function Student(){
+class Student{
 
-} 
-Student.prototype={
-    id: 0,
-    personaID: new Person(),
-    contactoEmergencia:'',
-    telefonoEmergencia:''
+    constructor(){
+        this.id= 0;
+        this.personID= new Person();
+        this.emergencyContactName='';
+        this.emergencyContactTel='';
+}
 }
 module.exports= Student;

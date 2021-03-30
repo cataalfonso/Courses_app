@@ -6,7 +6,7 @@ class Course {
         this.id= 0;
         this.name= '';
         this.duration= '';
-        this.grades= new Grade;
+        this.grades= new Grade();
     }
 
 }

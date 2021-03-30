@@ -1,11 +1,11 @@
 const Course = require("./course");
 
-function Subject(){
-}
-Subject.prototype = {
-    id: 0,
-    nombre: '',
-    cursoId: new Course()
-}
+class Subject{
 
+    constructor() {
+        this.id= 0;
+        this.name= '';
+        this.couseId= new Course();
+    }
+}
 module.exports = Subject;

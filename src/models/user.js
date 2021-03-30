@@ -1,10 +1,10 @@
-function User(){
-}
-User.prototype = {
-    id: 0,
-    login: '',
-    password: '',
-    type: ''
-}
+class  User{
 
+constructor(){
+    this.id= 0;
+    this.login= '';
+    this.password= '';
+    this.type= '';
+}
+}
 module.exports = User;
