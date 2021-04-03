@@ -12,9 +12,11 @@ class DbSet extends Array{
     }
     remove(id){
         const index = this.findIndex(item => item.id === id);
-        this.splice(index, 1);
-        this.hasChanges = true;
-        this.save();
+        if (index >=0){
+            this.splice(index, 1);
+            this.hasChanges = true;
+            this.save()
+        };
     }
     findById(id){
         const item = this.find((_item) => _item.id === id);
@@ -23,13 +25,15 @@ class DbSet extends Array{
 
     update(id, object){
         const index = this.findIndex(item => item.id === id);
-        const item = this.find((_item) => _item.id === id);
-        this.newValue={
-            id: item.id,
-            ...object};
-        this.splice(index, 1, this.newValue);
-        this.hasChanges = true;
-        this.save();
+        if (index >=0){
+            const item = this.find((_item) => _item.id === id);
+            this.newValue={
+                id: item.id,
+                ...object};
+            this.splice(index, 1, this.newValue);
+            this.hasChanges = true;
+            this.save();
+        };    
     }
 
 }

@@ -1,11 +1,11 @@
 const CtxCourses = require('../context/ctx-courses');
-const Context= require('../context/ctx-courses');
 const courseModel= require('../models/course');
+
 
 class CourseController extends CtxCourses{
     constructor( ){
         super();
-        this._model=courseModel;
+        this._model= new courseModel;
     }
 
     add(item) {
@@ -20,9 +20,13 @@ class CourseController extends CtxCourses{
         }
       }
     
-      update(id, item) {
+    update(id, item) {
         this.courses.update(id, item);
       }
+
+    find (id){
+       this.courses.findById(id);
+     } 
 }
 
 module.exports = CourseController;

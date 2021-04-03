@@ -8,7 +8,7 @@ class Grade {
     this.id= 0;
     this.student= new Student();
     this.subject= new Subject();
-    this.course=new Course();
+    //this.course=new Course();
     this.concept= '';
     this.value= 0;
 }
