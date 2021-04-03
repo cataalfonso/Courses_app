@@ -11,8 +11,8 @@ class UserController extends CtxUsers{
     }
     
     loginUser (data){
-        const index = this.users.findIndex( (element) => element.login == data.login);
-        if (index > 0){
+        const index = this.users.findIndex( (element) => element.login === data.login);
+        if (index >= 0){
             if (this.users[index].password===data.password){
                 console.log('Ingreso exitoso');
                 this.logged= true

@@ -37,7 +37,7 @@ class CourseController extends CtxCourses{
 
     list(){
       inquirer.prompt(this.choices).then((answers)=>{
-            console.log(this.courses.filter(answers));
+            console.log(this.courses.filter((element)=> element.choices === answers));
       });
     }
 }

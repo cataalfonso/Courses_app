@@ -21,7 +21,7 @@ const _ctrl= new CtrlCourses();
 inquirer.prompt(_ctrl._model.questions).then((answers) => {
   //  _ctrl.add (answers);
     _ctrl.loginUser(answers);
-//});
+})
 
 
 
