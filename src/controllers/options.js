@@ -1,8 +1,17 @@
 function Options(){
+  
+  this.globalOptionsPrompt = {
+    type: 'rawlist',
+    name: 'globalOptions',
+    message: 'Indique qué desea hacer:',
+    choices: ['Información de cursos',  'Información  de materias','Información de notas', 'Actualizar su perfil',],
+  };
+  
 
-    this.optionsPrompt = {
+  
+  this.localoptionsPrompt = {
        type: 'rawlist',
-       name: 'options',
+       name: 'localOptions',
        message: 'Indique la operación que desea realizar:',
        choices: ['Nuevo registro', 'Eliminar registro', 'Actualizar registro', 'Consultar'],
      };

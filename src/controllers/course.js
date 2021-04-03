@@ -9,10 +9,11 @@ class CourseController extends CtxCourses{
         this._model= new courseModel();
         this.choices=[{
           type: 'rawlist',
-          name: 'name',
+          name: 'criteria',
           message: "Elija el criterio por el que desea buscar",
-          choices: [Object.keys(this._model)]  
+          choices: ["id", "name", "duration"]   //intento hacerlo dinamico, pero no lo toma Object.keys(this._model)
         }];
+      
     }
 
     add(course) {
@@ -37,7 +38,35 @@ class CourseController extends CtxCourses{
 
     list(){
       inquirer.prompt(this.choices).then((answers)=>{
-            console.log(this.courses.filter((element)=> element.choices === answers));
+        switch (answers.criteria) {
+          case 'id':
+            inquirer.prompt({
+              type: 'input',
+              name: 'id',
+              message: "Ingrese el id del curso",
+              }).then((answers)=>{ 
+                console.log(this.courses.filter((element)=> element.id=== answers.id));
+              });
+              break;
+          case 'name':
+            inquirer.prompt({
+              type: 'input',
+              name: 'name',
+              message: "Ingrese el nombre del curso",
+              }).then((answers)=>{ 
+                console.table(this.courses.filter((element)=> element.name=== answers.name));
+              });
+              break;
+          case 'duration':
+            inquirer.prompt({
+              type: 'input',
+              name: 'duration',
+              message: "Ingrese la duración del curso",
+              }).then((answers)=>{ 
+                console.table(this.courses.filter((element)=> element.duration=== answers.duration));
+              });
+              break;
+          }     
       });
     }
 }

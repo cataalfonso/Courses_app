@@ -1,7 +1,5 @@
-var inquirer = require('inquirer');
 const CtxUsers = require('../context/ctx-courses');
 const usersModel= require('../models/user');
-
 
 class UserController extends CtxUsers{
     constructor( ){
