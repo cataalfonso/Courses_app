@@ -1,3 +1,4 @@
+var inquirer = require('inquirer');
 const CtxCourses = require('../context/ctx-courses');
 const courseModel= require('../models/course');
 
@@ -5,12 +6,18 @@ const courseModel= require('../models/course');
 class CourseController extends CtxCourses{
     constructor( ){
         super();
-        this._model= new courseModel;
+        this._model= new courseModel();
+        this.choices=[{
+          type: 'rawlist',
+          name: 'name',
+          message: "Elija el criterio por el que desea buscar",
+          choices: [Object.keys(this._model)]  
+        }];
     }
 
-    add(item) {
-        if (item) {
-          this.courses.add(item);
+    add(course) {
+        if (course) {
+          this.courses.add(course);
         }
       }
     
@@ -27,6 +34,12 @@ class CourseController extends CtxCourses{
     find (id){
        this.courses.findById(id);
      } 
+
+    list(){
+      inquirer.prompt(this.choices).then((answers)=>{
+            console.log(this.courses.filter(answers));
+      });
+    }
 }
 
 module.exports = CourseController;
