@@ -1,12 +1,10 @@
 var inquirer = require('inquirer');
 const CtxCourses = require('../context/ctx-courses');
-const courseModel= require('../models/course');
 
 
 class CourseController extends CtxCourses{
     constructor( ){
         super();
-        this._model= new courseModel();
         this.choices=[{
           type: 'rawlist',
           name: 'criteria',

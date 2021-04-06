@@ -1,10 +1,8 @@
-const CtxUsers = require('../context/ctx-courses');
-const usersModel= require('../models/user');
+const Ctx = require('../context/ctx-courses');
 
-class UserController extends CtxUsers{
+class UserController extends Ctx{
     constructor( ){
         super();
-        this._model= new usersModel();
         this.logged= false;
     }
     
@@ -12,13 +10,14 @@ class UserController extends CtxUsers{
         const index = this.users.findIndex( (element) => element.login === data.login);
         if (index >= 0){
             if (this.users[index].password===data.password){
-                console.log('Ingreso exitoso');
-                this.logged= true
+                this.logged= true;
+                this.type=this.users[index].type;
+                return true
             } else{
-                console.log('Usuario o contraseña incorrectos');
+                return false
             }
         } else{
-            console.log ('El usuario no existe');
+            return false
         }    
     }
 

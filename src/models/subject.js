@@ -5,7 +5,7 @@ class Subject{
     constructor() {
         this.id= 0;
         this.name= '';
-        //this.courseId= new Course(); está arrojando que course no es un constructor
+        this.courseId= new Course()
     }
 }
 module.exports = Subject;
