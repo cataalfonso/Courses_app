@@ -12,19 +12,20 @@ class MainView extends UserController{
         super();
     }
 
-    login(){
+    login(callback){
         inquirer.prompt(asklogin.questions).then((answers) => {
             if(this.loginUser(answers)){
                 console.log (asklogin.loginsucess);
+                callback();
             }else{
                 console.log (asklogin.loginfailed);    
             };
         });
     }
     
-    menu (usertype){
-        switch (usertype){
-        case 'admin':
+    menu (){
+        switch (this.type){
+        case 'Admin':
             console.log('hellooooo');
             break;
         case 'teacher':
