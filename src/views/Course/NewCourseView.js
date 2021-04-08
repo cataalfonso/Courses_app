@@ -1,6 +1,7 @@
 //poner en las vistas lo que tenga que preguntar para ingresar los datos
-
-class AddCourseView {
+// un controlador para varias vistas, y la vista debe ser muy sencilla. El controlador dice cual vista se muestra.
+//las acciones y logica de negocio van en el controlador
+class NewCourseView {
 
   constructor(){
       this.addquestions = [
@@ -19,4 +20,4 @@ class AddCourseView {
 
 }  
 
-module.exports= CourseView;
+module.exports= NewCourseView;

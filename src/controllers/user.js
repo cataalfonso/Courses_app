@@ -1,4 +1,5 @@
 const Ctx = require('../context/ctx-courses');
+const AdminView= require('../views/user/admin');
 
 class UserController extends Ctx{
     constructor( ){
@@ -40,6 +41,19 @@ class UserController extends Ctx{
     find (id){
        this.users.findById(id);
      } 
+
+    menu (type){
+      switch (type){
+      case 'Admin':
+           const opt=new AdminView();
+           opt.selectAction();
+          break;
+      case 'teacher':
+          break;
+      
+      case 'student':
+          break;    
+  }}
 
    
     }

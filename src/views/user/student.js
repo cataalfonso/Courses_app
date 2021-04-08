@@ -3,16 +3,12 @@ const inquirer= require('inquirer');
 
 const menu= new Options();
 
-class AdminView{
+class StudentView{
 
-selectaction(){    
-    inquirer.prompt(menu.globalOptionsPrompt).then((answers)=>{
+selectAction(){    
+    inquirer.prompt(menu.studentOptionsPrompt).then((answers)=>{
         console.log('Elegiste la opción: ' + answers.globalOptions);
         switch (answers.globalOptions) {
-        case 'Información de cursos':
-            const _ctrl= new CtrlCourses();
-            _ctrl.list();
-            break;
         case 'Información de materias':
            
             break;
@@ -28,4 +24,4 @@ selectaction(){
 
 }
 
-module.exports= AdminView;
+module.exports= StudentView;

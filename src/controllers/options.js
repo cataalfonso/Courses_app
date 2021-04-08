@@ -1,12 +1,44 @@
 class Options {
   
   constructor(){
-    this.globalOptionsPrompt = {
+    this.adminOptionsPrompt = {
       type: 'rawlist',
       name: 'globalOptions',
       message: 'Indique qué desea hacer:',
-      choices: ['Información de cursos',  'Información  de materias','Información de notas', 'Actualizar su perfil',]
+      choices: [
+        'Cursos',
+        'Notas',
+        'Parametros',
+        'Pass-Reset',
+        'Profesores',
+        'Estudiantes',
+        'Materias',
+        'Usuarios', ]
     };
+    
+    
+    this.teacherOptionsPrompt = {
+      type: 'rawlist',
+      name: 'globalOptions',
+      message: 'Indique qué desea hacer:',
+      choices: [
+       'Información de cursos', 
+       'Información de materias',
+       'Información de notas', 
+       'Actualizar su perfil',]
+    };
+
+    this.studentOptionsPrompt = {
+      type: 'rawlist',
+      name: 'globalOptions',
+      message: 'Indique qué desea hacer:',
+      choices: [
+       'Información de materias',
+       'Información de notas', 
+       'Actualizar su perfil',]
+    };
+
+
     this.localoptionsPrompt = {
       type: 'rawlist',
       name: 'localOptions',

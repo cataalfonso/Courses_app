@@ -1,7 +1,9 @@
 //Vista ppal que tiene el logueo y llama a las otras vistas
 const inquirer= require('inquirer');
 const LoginView= require('./user/loginview');
-const AdminView= require('./admin/admin');
+const AdminView= require('./user/admin');
+const TeacherView= require('./user/teacher');
+const StudentView= require('./user/student');
 const UserController = require('../controllers/user');
 
 const asklogin = new LoginView();
@@ -26,13 +28,19 @@ class MainView extends UserController{
     menu (){
         switch (this.type){
         case 'Admin':
-            console.log('hellooooo');
+             const opt1=new AdminView();
+             opt1.selectAction(); 
             break;
         case 'teacher':
+            const opt2=new TeacherView();
+            opt2.selectAction(); 
             break;
         
         case 'student':
-            break;    
+            const opt3=new StudentView();
+            opt3.selectAction(); 
+            break;  
+             
     }}
 
     
