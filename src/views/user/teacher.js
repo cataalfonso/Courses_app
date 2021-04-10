@@ -10,8 +10,7 @@ class TeacherView{
             console.log('Elegiste la opción: ' + answers.globalOptions);
             switch (answers.globalOptions) {
             case 'Información de cursos':
-                const _ctrl= new CtrlCourses();
-                _ctrl.list();
+                
                 break;
             case 'Información de materias':
                

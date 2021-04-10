@@ -39,7 +39,7 @@ class Options {
     };
 
 
-    this.localoptionsPrompt = {
+    this.localOptionsPrompt = {
       type: 'rawlist',
       name: 'localOptions',
       message: 'Indique la operación que desea realizar:',
