@@ -6,7 +6,6 @@ const MSG_LOGIN_SUCCESS = 'Ingreso exitoso';
 class LoginView{
 
     constructor(){
-        console.log(UserController);
         this.controller = new UserController();
     }
 

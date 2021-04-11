@@ -1,7 +1,7 @@
 const inquirer = require('inquirer');
 
 
-class AdminView {
+class StudentView {
     constructor(_controller){
         this.controller = _controller
         this.optionsPrompt = {
@@ -9,15 +9,10 @@ class AdminView {
             name: 'globalOptions',
             message: 'Indique qué desea hacer:',
             choices: [
-              'Cursos',
-              'Notas',
-              'Parametros',
-              'Pass-Reset',
-              'Profesores',
-              'Estudiantes',
-              'Materias',
-              'Usuarios', ]
-          };
+            'Información de materias',
+            'Información de notas', 
+            'Actualizar su perfil',]
+        };
     }
     selectAction() {
         inquirer.prompt(this.optionsPrompt).then((answers) => {
@@ -28,5 +23,4 @@ class AdminView {
     }
 }
 
-module.exports = AdminView;
-
+module.exports = StudentView;

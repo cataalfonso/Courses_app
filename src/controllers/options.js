@@ -1,20 +1,7 @@
 class Options {
   
   constructor(){
-    this.adminOptionsPrompt = {
-      type: 'rawlist',
-      name: 'globalOptions',
-      message: 'Indique qué desea hacer:',
-      choices: [
-        'Cursos',
-        'Notas',
-        'Parametros',
-        'Pass-Reset',
-        'Profesores',
-        'Estudiantes',
-        'Materias',
-        'Usuarios', ]
-    };
+    
     
     
     this.teacherOptionsPrompt = {
@@ -39,25 +26,6 @@ class Options {
     };
 
 
-    this.localOptionsPrompt = {
-      type: 'rawlist',
-      name: 'localOptions',
-      message: 'Indique la operación que desea realizar:',
-      choices: ['Nuevo registro', 'Eliminar registro', 'Actualizar registro', 'Consultar'],
-    };
-   
-   this.idPrompt= {
-       type: 'input',
-       name: 'id',
-       message:'Ingrese el id del registro',
-   }; 
-   
-   this.confirmPrompt ={
-     type:'confirm',
-     name: 'confirm',
-     message: 'Desea realizar la operación?',
-     default: false,
- };
 
 }
 }

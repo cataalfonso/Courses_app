@@ -1,42 +1,36 @@
-const Ctx = require('../context/ctx-courses');
+const CtxCourses = require('../context/ctx-courses');
 
 
-class ParamController extends Ctx{
+class ParamController{
     constructor( ){
-        super();
+        this.context= new CtxCourses();
     }
     
     add(param) {
         if (param) {
-          this.params.add(param);
+          this.context.params.add(param);
         }
     }
     
     remove(id) {
         if (id) {
-          this.params.remove(id);
+          this.context.params.remove(id);
         }
       }
     
     update(id, item) {
-        this.params.update(id, item);
+        this.context.params.update(id, item);
       }
 
     find (id){
-       this.params.findById(id);
+       this.context.params.findById(id);
      } 
-
-    listall(){
-      console.table(this.params);
-    } 
    
     list(criteria, compare){
       // criteria es el nombre de la propiedad por la cual se busca, compare, el valor que estoy buscando
       console.table(this.params.filter((element)=> element[criteria]== compare))
     }  
-
-
-    }
+  }
 
 module.exports = ParamController;
 

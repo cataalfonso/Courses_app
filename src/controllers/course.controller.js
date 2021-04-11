@@ -1,4 +1,3 @@
-var inquirer = require('inquirer');
 const CtxCourses = require('../context/ctx-courses');
 const DeleteView = require('../views/Course/delete.view');
 const NewView = require('../views/Course/new.view');

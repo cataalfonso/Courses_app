@@ -1,13 +1,12 @@
 const CtxCourses = require('../context/ctx-courses');
 const CourseView = require('../views/Course/course.view');
 const AdminView = require('../views/user/admin.view');
-const StudentView = require('../views/user/student');
-const TeacherView = require('../views/user/teacher');
+const StudentView = require('../views/user/student.view');
+const TeacherView = require('../views/user/teacher.view');
 
 
 const MSG_LOGIN_FAILED = 'Usuario o contraseña incorrectos';
 
-//corregir burrada del contexto en todos los controladores, pao , pao
 class UserController {
   constructor() {
     this.logged = false;
@@ -19,12 +18,11 @@ class UserController {
     if (index >= 0) {
       const currentUser = this.context.users[index];
       this.logged = true;
-      console.log(currentUser);
       let view = {};
       switch (currentUser.type) {
         case 'Admin': view = new AdminView(this); break;
-        case 'teacher': view = new TeacherView(); break;
-        case 'student': view = new StudentView(); break;
+        case 'teacher': view = new TeacherView(this); break;
+        case 'student': view = new StudentView(this); break;
       }
       view.selectAction();
       } else {

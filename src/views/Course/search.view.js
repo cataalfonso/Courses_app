@@ -9,7 +9,7 @@ class SearchView {
       type: 'rawlist',
       name: 'criteria',
       message: "Elija el criterio por el que desea buscar",
-      choices: ["id", "name", "duration"]   //intento hacerlo dinamico, pero no lo toma Object.keys(this._model)
+      choices: ["id", "name", "duration"]  
     }];
 
     this.id = [
