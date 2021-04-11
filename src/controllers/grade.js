@@ -1,31 +1,32 @@
 const Ctx = require('../context/ctx-courses');
 
-class SubjectController extends Ctx{
+
+class GradeController extends Ctx{
     constructor( ){
         super();
     }
     
-    add(subject) {
-        if (subject) {
-          this.subjects.add(subject);
+    add(grade) {
+        if (grade) {
+          this.grades.add(grade);
         }
     }
     
     remove(id) {
         if (id) {
-          this.subjects.remove(id);
+          this.grades.remove(id);
         }
       }
     
     update(id, item) {
-        this.subjects.update(id, item);
+        this.grades.update(id, item);
       }
 
     find (id){
-       this.subjects.findById(id);
+       this.grades.findById(id);
      } 
-
    
     }
 
-module.exports = SubjectController;
+module.exports = GradeController;
+

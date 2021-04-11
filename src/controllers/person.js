@@ -1,30 +1,30 @@
 const Ctx = require('../context/ctx-courses');
 
-class StudentController extends Ctx{
-    constructor( ){
-        super();
-    }
-    
-    add(student) {
-        if (student) {
-          this.students.add(student);
-        }
-    }
-    
-    remove(id) {
-        if (id) {
-          this.students.remove(id);
-        }
+class PersonController extends Ctx{
+  constructor( ){
+      super();
+  }
+  
+  add(student) {
+      if (student) {
+        this.persons.add(student);
       }
-    
-    update(id, item) {
-        this.students.update(id, item);
+  }
+  
+  remove(id) {
+      if (id) {
+        this.persons.remove(id);
       }
-
-    find (id){
-       this.students.findById(id);
-     } 
-   
+    }
+  
+  update(id, item) {
+      this.persons.update(id, item);
     }
 
-module.exports = StudentController;
+  find (id){
+     this.persons.findById(id);
+   } 
+ 
+  }
+
+module.exports = PersonController;
