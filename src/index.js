@@ -1,18 +1,13 @@
 //dejar aca solo el llamado de la primera vista que es el login
 
-const MainView = require("./views/mainView");
 
-const start= new MainView;
+const LoginView = require("./views/user/login.view");
+
+const _loginView = new LoginView;
 
 function main(){
-    start.login(() => {
-        showmenu();
-    });
-}
-
-function showmenu(){
-    start.menu();
-}    
+    _loginView.login();
+} 
 
 main();
 

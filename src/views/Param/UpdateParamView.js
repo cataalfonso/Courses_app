@@ -1,4 +1,4 @@
-class UpdateParamView {
+class UpdateView {
 
   constructor(){
       this.questions = [
@@ -22,4 +22,4 @@ class UpdateParamView {
 
 }  
 
-module.exports= UpdateParamView;
+module.exports= UpdateView;
