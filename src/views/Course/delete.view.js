@@ -1,9 +1,9 @@
-const CourseController = require("../../controllers/course.controller");
+const inquirer= require('inquirer');
 
 class DeleteView {
 
-  constructor() {
-    this.controller = new CourseController();
+  constructor(_controller) {
+    this.controller = _controller;
     this.questions = [
       {
         type: 'input',

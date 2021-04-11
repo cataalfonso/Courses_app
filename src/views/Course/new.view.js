@@ -1,13 +1,13 @@
 //poner en las vistas lo que tenga que preguntar para ingresar los datos
 // un controlador para varias vistas, y la vista debe ser muy sencilla. El controlador dice cual vista se muestra.
 
-const CourseController = require("../../controllers/course.controller");
+const inquirer= require('inquirer');
 
 //las acciones y logica de negocio van en el controlador
 class NewView {
 
-  constructor() {
-    this.controller = new CourseController();
+  constructor(_controller) {
+    this.controller =_controller;
     this.addquestions = [
       {
         type: 'input',

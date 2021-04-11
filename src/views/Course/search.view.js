@@ -1,9 +1,10 @@
 const CourseController = require("../../controllers/course.controller");
+const inquirer= require('inquirer');
 
 class SearchView {
 
-  constructor() {
-    this.controller = new CourseController();
+  constructor(_controller) {
+    this.controller = _controller;
     this.choices = [{
       type: 'rawlist',
       name: 'criteria',

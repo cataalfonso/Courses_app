@@ -1,14 +1,11 @@
 const Options = require('../../controllers/options');
 const inquirer = require('inquirer');
-const UserController = require("../../controllers/user.controller");
 
 const menu = new Options();
 
 class AdminView {
-    constructor(){
-        console.log(this.controller);
-        console.log(UserController);
-        this.controller = new UserController();
+    constructor(_controller){
+        this.controller = _controller
     }
     selectAction() {
         inquirer.prompt(menu.adminOptionsPrompt).then((answers) => {

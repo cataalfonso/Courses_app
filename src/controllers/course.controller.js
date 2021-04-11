@@ -15,10 +15,10 @@ class CourseController {
   selectAction(options) {
     let view = {};
     switch (options) {
-      case 'Nuevo registro': view = new NewView(); break;
-      case 'Eliminar registro': view = new DeleteView(); break;
-      case 'Actualizar registro': view = new UpdateView(); break;
-      case 'Consultar': view = new SearchView(); break;
+      case 'Nuevo registro': view = new NewView(this); break;
+      case 'Eliminar registro': view = new DeleteView(this); break;
+      case 'Actualizar registro': view = new UpdateView(this); break;
+      case 'Consultar': view = new SearchView(this); break;
     }
     view.index();
   }
