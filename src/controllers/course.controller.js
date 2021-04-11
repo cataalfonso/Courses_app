@@ -9,7 +9,6 @@ const UpdateView = require('../views/Course/update.view');
 class CourseController {
 
   constructor() {
-    super();
     this.context = new CtxCourses();
   }
 

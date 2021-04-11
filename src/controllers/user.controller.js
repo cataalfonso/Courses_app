@@ -15,22 +15,19 @@ class UserController {
   }
 
   loginUser(data) {
-    const index = this.context.users.findIndex((element) => element.login === data.login);
+    const index = this.context.users.findIndex((element) => element.login === data.login && element.password === data.password);
     if (index >= 0) {
       const currentUser = this.context.users[index];
-      if (currentUser.password === data.password) {
-        this.logged = true;
-        let view = {};
-        switch (currentUser.type) {
-          case 'Admin': view = new AdminView(); break;
-          case 'teacher': view = new TeacherView(); break;
-          case 'student': view = new StudentView(); break;
-        }
-        view.selectAction();
-      } else {
-        throw new Error(MSG_LOGIN_FAILED);
+      this.logged = true;
+      console.log(currentUser);
+      let view = {};
+      switch (currentUser.type) {
+        case 'Admin': view = new AdminView; break;
+        case 'teacher': view = new TeacherView(); break;
+        case 'student': view = new StudentView(); break;
       }
-    } else {
+      view.selectAction();
+      } else {
       throw new Error(MSG_LOGIN_FAILED);
     }
   }

@@ -1,10 +1,12 @@
 const UserController = require("../../controllers/user.controller");
+const inquirer= require('inquirer');
 
 const MSG_LOGIN_SUCCESS = 'Ingreso exitoso';
 
 class LoginView{
 
     constructor(){
+        console.log(UserController);
         this.controller = new UserController();
     }
 
