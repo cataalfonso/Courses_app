@@ -3,7 +3,6 @@ const CourseView = require('../views/Course/course.view');
 const AdminView = require('../views/user/admin.view');
 const StudentView = require('../views/user/student');
 const TeacherView = require('../views/user/teacher');
-const CourseController = require('./course.controller');
 
 
 const MSG_LOGIN_FAILED = 'Usuario o contraseña incorrectos';
@@ -35,10 +34,9 @@ class UserController {
 
   //cambiar vistas
   selectAction(options) {
-    const _couseController= new CourseController();
     let view = {};
     switch (options) {
-      case 'Cursos': view = new CourseView(_couseController); break;
+      case 'Cursos': view = new CourseView(); break;
       case 'Notas':view = new CourseView(); break;
       case 'Parametros':view = new CourseView(); break;
       case 'Pass-Reset':view = new CourseView(); break;

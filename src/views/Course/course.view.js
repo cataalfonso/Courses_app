@@ -1,9 +1,10 @@
 const inquirer= require('inquirer');
+const CourseController = require('../../controllers/course.controller');
 
 class CourseView{
 
-    constructor(_controller){
-        this.controller = _controller;
+    constructor(){
+        this.controller = new CourseController();
         this.localOptionsPrompt = {
             type: 'rawlist',
             name: 'localOptions',
