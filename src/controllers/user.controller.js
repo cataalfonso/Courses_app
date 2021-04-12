@@ -43,7 +43,7 @@ class UserController {
       case 'Materias':view = new CourseView(); break;
       case 'Usuarios':view = new CourseView(); break;
     }
-    view.selectAction();
+    view.selectAction(this.context.users.type);
   }
 
   add(user) {

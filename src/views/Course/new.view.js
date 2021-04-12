@@ -3,7 +3,6 @@
 
 const inquirer= require('inquirer');
 
-//las acciones y logica de negocio van en el controlador
 class NewView {
 
   constructor(_controller) {

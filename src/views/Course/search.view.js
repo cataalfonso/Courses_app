@@ -45,20 +45,24 @@ class SearchView {
         case 'id':
           inquirer.prompt(this.id).then((answers) => {
             items = this.controller.list('id', answers.id);
+            console.table(items);
           });
           break;
         case 'name':
           inquirer.prompt(this.name).then((answers) => {
             items = this.controller.list('name', answers.name);
+            console.table(items);
           });
           break;
         case 'duration':
           inquirer.prompt(this.duration).then((answers) => {
             items = this.controller.list('duration', answers.duration);
+            console.table(items);
           });
           break;
+        
       }
-      console.table(items);
+      // console.table(items) este no funciona, imprime la tabla antes de hacer la consulta, llevo el console.table a cada criterio
     });
   }
 

@@ -18,7 +18,7 @@ class CourseController {
       case 'Eliminar registro': view = new DeleteView(this); break;
       case 'Actualizar registro': view = new UpdateView(this); break;
       case 'Consultar': view = new SearchView(this); break;
-    }
+    };
     view.index();
   }
 

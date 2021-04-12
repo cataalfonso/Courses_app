@@ -9,12 +9,13 @@ class TeacherView {
             name: 'globalOptions',
             message: 'Indique qué desea hacer:',
             choices: [
-                'Información de cursos', 
-                'Información de materias',
-                'Información de notas', 
+                'Cursos',
+                'Materias',
+                'Notas', 
                 'Actualizar su perfil',]
         };
     }
+
     selectAction() {
         inquirer.prompt(this.optionsPrompt).then((answers) => {
             console.log('Elegiste la opción: ' + answers.globalOptions);

@@ -9,8 +9,8 @@ class StudentView {
             name: 'globalOptions',
             message: 'Indique qué desea hacer:',
             choices: [
-            'Información de materias',
-            'Información de notas', 
+            'Materias',
+            'Notas', 
             'Actualizar su perfil',]
         };
     }
