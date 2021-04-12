@@ -9,31 +9,31 @@ class SearchView {
       type: 'rawlist',
       name: 'criteria',
       message: "Elija el criterio por el que desea buscar",
-      choices: ["id", "name", "duration"]  
+      choices: ["id", "valor", "descripción"]  
     }];
 
     this.id = [
       {
         type: 'input',
         name: 'id',
-        message: "Ingrese el id del  curso",
+        message: "Ingrese el id del parámetro",
       },
 
     ];
 
-    this.name = [
+    this.value = [
       {
         type: 'input',
-        name: 'name',
-        message: "Ingrese el nombre del  curso",
+        name: 'value',
+        message: "Ingrese el valor del parámetro",
       },
     ];
 
-    this.duration = [
+    this.description = [
       {
         type: 'input',
-        name: 'duration',
-        message: "Ingrese la duración del curso en meses",
+        name: 'description',
+        message: "Ingrese la descripción del parámetro",
       },
     ];
 
@@ -48,21 +48,20 @@ class SearchView {
             console.table(items);
           });
           break;
-        case 'name':
-          inquirer.prompt(this.name).then((answers) => {
-            items = this.controller.list('name', answers.name);
+        case 'valor':
+          inquirer.prompt(this.value).then((answers) => {
+            items = this.controller.list('value', answers.value);
             console.table(items);
           });
           break;
-        case 'duration':
-          inquirer.prompt(this.duration).then((answers) => {
-            items = this.controller.list('duration', answers.duration);
+        case 'descripción':
+          inquirer.prompt(this.description).then((answers) => {
+            items = this.controller.list('description', answers.description);
             console.table(items);
           });
           break;
         
       }
-      // console.table(items) este no funciona, imprime la tabla antes de hacer la consulta, llevo el console.table a cada criterio
     });
   }
 

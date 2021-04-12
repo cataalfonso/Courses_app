@@ -12,13 +12,13 @@ class UpdateView {
       },
       {
         type: 'input',
-        name: 'name',
-        message: "Ingrese el nombre del  curso",
+        name: 'value',
+        message: "Ingrese el valor del parámetro",
       },
       {
         type: 'input',
-        name: 'duration',
-        message: "Ingrese la duración del curso en meses",
+        name: 'description',
+        message: "Ingrese la descripción del parámetro",
       },
     ];
   }
@@ -27,7 +27,7 @@ class UpdateView {
     inquirer.prompt(this.questions).then((answers) => {
       this.controller.update(answers.id, answers);
       console.table(this.controller.items);
-      console.log('Curso actualizado exitosamente');
+      console.log('Parámetro actualizado exitosamente');
     });
   }
 
