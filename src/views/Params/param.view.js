@@ -12,8 +12,8 @@ class ParamView{
             choices: ['Nuevo registro', 'Eliminar registro', 'Actualizar registro', 'Consultar'],
           };
     }
-    selectAction(usertype){
-        if (usertype == 'Admin'){
+    selectAction(currentUser){
+        if (currentUser.type == 'Admin'){
             inquirer.prompt(this.localOptionsPrompt).then((answers) => {
                 console.log('Elegiste la opción: ' + answers.localOptions);
                 this.controller.selectAction(answers.localOptions);

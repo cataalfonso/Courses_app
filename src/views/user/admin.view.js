@@ -19,10 +19,10 @@ class AdminView {
               'Usuarios', ]
           };
     }
-    selectAction(role) {
+    selectAction(currentUser) {
         inquirer.prompt(this.optionsPrompt).then((answers) => {
             console.log('Elegiste la opción: ' + answers.globalOptions);
-            this.controller.selectAction(role, answers.globalOptions);
+            this.controller.selectAction(currentUser, answers.globalOptions);
         });
 
     }

@@ -1,5 +1,5 @@
 const CtxCourses = require('../context/ctx-courses');
-const DeleteView = require('../views/Params/delete.view');
+const DeleteView = require('../views/delete.view');
 const NewView = require('../views/Params/new.view');
 const SearchView = require('../views/Params/search.view');
 const UpdateView = require('../views/Params/update.view');

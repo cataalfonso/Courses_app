@@ -8,7 +8,7 @@ class DeleteView {
       {
         type: 'input',
         name: 'id',
-        message: "Ingrese el id del parámetro que desea eliminar",
+        message: "Ingrese el id del registro que desea eliminar",
       },
     ];
   }
@@ -18,7 +18,7 @@ class DeleteView {
     inquirer.prompt(this.questions).then((answers) => {
       this.controller.remove(answers.id);
       console.table(this.controller.items);
-      console.log('Parámetro eliminado exitosamente');
+      console.log('Registro eliminado exitosamente');
     });
   }
 

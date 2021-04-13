@@ -1,6 +1,7 @@
 const CtxCourses = require('../context/ctx-courses');
 const CourseView = require('../views/Course/course.view');
 const ParamView = require('../views/Params/param.view');
+const PersonView = require('../views/Person/person.view');
 const AdminView = require('../views/user/admin.view');
 const StudentView = require('../views/user/student.view');
 const TeacherView = require('../views/user/teacher.view');
@@ -25,26 +26,27 @@ class UserController {
         case 'teacher': view = new TeacherView(this); break;
         case 'student': view = new StudentView(this); break;
       }
-      view.selectAction(currentUser.type);
+      view.selectAction(currentUser);
       } else {
       throw new Error(MSG_LOGIN_FAILED);
     }
   }
 
   //cambiar vistas
-  selectAction(role, options) {
+  selectAction(currentUser, options) {
     let view = {};
     switch (options) {
       case 'Cursos': view = new CourseView(); break;
       case 'Notas':view = new CourseView(); break;
       case 'Parametros':view = new ParamView();break;
       case 'Pass-Reset':view = new CourseView(); break;
-      case 'Profesores':view = new CourseView(); break;
+      case 'Profesores':view = new PersonView(); break;
       case 'Estudiantes':view = new CourseView(); break;
       case 'Materias':view = new CourseView(); break;
       case 'Usuarios':view = new CourseView(); break;
+      case 'Actualizar su perfil': new PersonView(); break;
     }
-    view.selectAction(role);
+    view.selectAction(currentUser);
   }
 
   add(user) {
