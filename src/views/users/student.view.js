@@ -14,10 +14,10 @@ class StudentView {
             'Actualizar su perfil',]
         };
     }
-    selectAction() {
+    selectAction(currentUser) {
         inquirer.prompt(this.optionsPrompt).then((answers) => {
             console.log('Elegiste la opción: ' + answers.globalOptions);
-            this.controller.selectAction(answers.globalOptions);
+            this.controller.selectAction(currentUser, answers.globalOptions);
         });
 
     }

@@ -1,4 +1,4 @@
-const UserController = require("../../controllers/user.controller");
+const UsersController = require("../../controllers/users.controller");
 const inquirer= require('inquirer');
 
 const MSG_LOGIN_SUCCESS = 'Ingreso exitoso';
@@ -6,7 +6,7 @@ const MSG_LOGIN_SUCCESS = 'Ingreso exitoso';
 class LoginView{
 
     constructor(){
-        this.controller = new UserController();
+        this.controller = new UsersController();
     }
 
     get questions(){

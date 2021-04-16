@@ -37,7 +37,7 @@ class UpdateMineView {
       },
     ];
   }
-  index(currentUser){
+  index(currentUser){ // aqui necesito relacionar el current user con los datos en la bd personas de ese current user
     console.table(this.controller.items);
     inquirer.prompt(this.questions).then((answers) => {
       this.controller.update(answers.id, answers);

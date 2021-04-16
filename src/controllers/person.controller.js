@@ -23,7 +23,7 @@ class PersonController{
 
   updateOne(currentUser){
     console.log(currentUser);
-    view= new UpdateMineView(this);
+    let view= new UpdateMineView(this);
     view.index(currentUser);
   }  
 
