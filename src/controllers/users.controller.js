@@ -2,6 +2,7 @@ const CtxCourses = require('../context/ctx-courses');
 const CourseView = require('../views/Course/course.view');
 const ParamView = require('../views/Params/param.view');
 const PersonView = require('../views/Person/person.view');
+const StudentsView = require('../views/Student/student.view');
 const UserView = require('../views/user/user.view');
 const AdminView = require('../views/users/admin.view');
 const StudentView = require('../views/users/student.view');
@@ -42,7 +43,7 @@ class UsersController {
       case 'Parametros':view = new ParamView();break;
       case 'Pass-Reset':view = new CourseView(); break;
       case 'Profesores':view = new PersonView(); break;
-      case 'Estudiantes':view = new CourseView(); break;
+      case 'Estudiantes':view = new StudentsView(); break;
       case 'Materias':view = new CourseView(); break;
       case 'Usuarios':view = new UserView(); break;
       case 'Actualizar su perfil': view= new PersonView(); break;

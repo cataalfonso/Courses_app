@@ -16,13 +16,13 @@ class NewParentView {
   }
   index(){
     inquirer.prompt(this.questions).then((answers) => {
-      if (answers== 'Estudiante'){
+      if (answers.type== 'Estudiante'){
         console.table(this.controller.students)
       }
       else {
         console.table(this.controller.teachers)
       };
-     this.controller.parentLink(answers) 
+     this.controller.parentLink(answers.type) 
     });
   }
 
