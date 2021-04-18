@@ -3,8 +3,7 @@ const Person = require("./person")
 class Student{
 
     constructor(){
-        this.id= 0;
-        this.personID= new Person();
+        this.person= new Person();
         this.emergencyContactName='';
         this.emergencyContactTel='';
 }

@@ -14,6 +14,9 @@ class DbContext {
                 const path = `${this.dbPath}/${_entityName}.xml`;
                 const xmlHelper = new XmlHelper(path);
                 this[propName].push(...xmlHelper.xmlToJSON());
+                // buscar dentro de this.propname hacerle un for each y por cada elemento buscar una propiedad 
+                //donde le concatene "s" y ese nombre tiene que existir donde props, si es verdadero, buscar el valor dentro de la prop con s (person-persons)
+                //asigno el valor, y lo devuelvo. Como transformo el array, no es un for ecah sino un map
                 this[propName].save = this.save;
             }
            

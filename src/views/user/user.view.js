@@ -9,7 +9,7 @@ class UserView{
             type: 'rawlist',
             name: 'localOptions',
             message: 'Indique la operación que desea realizar:',
-            choices: ['Nuevo registro', 'Eliminar registro', 'Actualizar registro', 'Consultar'],
+            choices: ['Eliminar registro', 'Actualizar registro', 'Consultar'],
           };
     }
 

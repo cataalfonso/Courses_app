@@ -4,6 +4,9 @@ const DeleteView = require('../views/delete.view');
 const NewView = require('../views/Student/new.view');
 const SearchView = require('../views/Student/search.view');
 const UpdateView = require('../views/Student/update.view');
+const Student = require('../models/student');
+const Person = require('../models/person');
+const User = require('../models/user');
 
 class StudentController{
   constructor( ){
@@ -27,7 +30,24 @@ class StudentController{
   
   add(student) {
       if (student) {
-        this.context.students.add(student);
+        let newUser= new User();
+        newUser.login=student.login;
+        newUser.password=student.password;
+        newUser.type=student.type;
+        newUser = this.context.users.add(newUser);
+        let newPerson= new Person();
+        newPerson.firstName=student.firstName;
+        newPerson.lastName=student.lastName;
+        newPerson.telephone=student.telephone;
+        newPerson.adress=student.adress;
+        newPerson.birthDate=student.birthDate;
+        newPerson.user=newUser;
+        newPerson = this.context.persons.add(newPerson);
+        let newStudent= new Student;
+        newStudent.emergencyContactName=student.emergencyContactName;
+        newStudent.emergencyContactTel=student.emergencyContactTel;
+        newStudent.person=newPerson;
+        this.context.students.add(newStudent);
       }
   }
   
@@ -41,9 +61,6 @@ class StudentController{
       this.context.students.update(id, item);
     }
 
-  updateChildId(id, child, idChild){
-      this.context.students.updateChildId(id, child, idChild)
-  }  
 
   find (id){
      this.context.students.findById(id);

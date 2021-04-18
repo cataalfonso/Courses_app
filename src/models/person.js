@@ -3,7 +3,6 @@ const User = require("./user")
 class Person{
 
     constructor(){
-        this.id= 0;
         this.firstName= '';
         this.lastName='';
         this.user= new User();

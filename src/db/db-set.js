@@ -6,9 +6,16 @@ class DbSet extends Array{
         this.save = null;
     }
     add(item){
-        this.push({id: uuid.v4(), ...item});
+        let _item ={id: uuid.v4(), ...item}; 
+        Object.keys(_item).forEach((element) => {
+           if (typeof _item[element]==='object'){
+               _item[element]=_item[element].id
+           };
+        });
+        this.push(_item);
         this.hasChanges = true;
         this.save();
+        return _item;
     }
     remove(id){
         const index = this.findIndex(item => item.id === id);
@@ -36,18 +43,6 @@ class DbSet extends Array{
         };    
     }
 
-    updateChildId(id, child, idChild){
-        const index = this.findIndex(item => item.id === id);
-        if (index >=0){
-            let keyName= child;
-            const item = this.find((_item) => _item.id === id);
-            this.newValue= item;
-            this.newValue[keyName]= idChild;
-            this.splice(index, 1, this.newValue);
-            this.hasChanges = true;
-            this.save();
-        };
-    }
 
 }
 

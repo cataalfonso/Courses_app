@@ -8,6 +8,23 @@ class NewView {
     this.addquestions = [
       {
         type: 'input',
+        name: 'login',
+        message: "Ingrese el nombre de usuario",
+      },
+      {
+        type: 'input',
+        name: 'password',
+        message: "Ingrese la conraseña",
+      },
+      {
+        type: 'rawlist',
+        name: 'type',
+        message: "Ingrese el tipo de usuario",
+        choices: ['student'],
+        default: 'student',
+      },
+      {
+        type: 'input',
         name: 'firstName',
         message: "Ingrese los nombres",
       },
@@ -28,7 +45,7 @@ class NewView {
       },
       {
         type: 'input',
-        name: 'brthdate',
+        name: 'birthDate',
         message: "Ingrese fecha de nacimiento",
       },
       {
