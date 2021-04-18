@@ -6,8 +6,6 @@ class NewView {
   constructor(_controller) {
     this.controller =_controller;
     this.addquestions = [
-     
-      //this.user= new User(); pendiente conectarlo con la lista de usuarios
       {
         type: 'input',
         name: 'firstName',

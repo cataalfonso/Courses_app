@@ -36,5 +36,19 @@ class DbSet extends Array{
         };    
     }
 
+    updateChildId(id, child, idChild){
+        const index = this.findIndex(item => item.id === id);
+        if (index >=0){
+            let keyName= child;
+            const item = this.find((_item) => _item.id === id);
+            this.newValue= item;
+            this.newValue[keyName]= idChild;
+            this.splice(index, 1, this.newValue);
+            this.hasChanges = true;
+            this.save();
+        };
+    }
+
 }
+
 module.exports = DbSet;

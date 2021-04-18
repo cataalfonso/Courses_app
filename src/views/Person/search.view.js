@@ -12,7 +12,7 @@ class SearchView {
       choices: ["id", "Nombre", "Apellido"]  
     }];
 
-    this.id = [
+    this.id =[
       {
         type: 'input',
         name: 'id',
@@ -49,7 +49,7 @@ class SearchView {
           });
           break;
         case 'Nombre':
-          inquirer.prompt(this.fistName).then((answers) => {
+          inquirer.prompt(this.firstName).then((answers) => {
             items = this.controller.list('firstName', answers.firstName);
             console.table(items);
           });

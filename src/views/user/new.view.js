@@ -23,15 +23,22 @@ class NewView {
         choices: ['Admin', 'teacher', 'student'],
       },
     ]
+    this.idParent={
+        type: 'input',
+        name: 'idParent',
+        message: "Ingrese el id para el cual creará el usuario (ver tabla)",
+    }
   }
-  index(){
-    inquirer.prompt(this.addquestions).then((answers) => {
-      this.controller.add(answers);
-      console.table(this.controller.items);
+
+  index(type){
+    inquirer.prompt(this.idParent).then((answers1) => {
+      inquirer.prompt(this.addquestions).then((answers) => {
+        this.controller.add(type, answers1.idParent, answers);
+        console.table(this.controller.items);
       console.log('Registro agregado exitosamente');
+      });  
     });
-  }
+  } 
+}  
 
-}
-
-module.exports = NewView;
+module.exports=NewView;

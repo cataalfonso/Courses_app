@@ -47,6 +47,9 @@ class PersonController{
       this.context.persons.update(id, item);
     }
 
+  updateChildId(id, child, idChild){
+      this.context.persons.updateChildId(id, child, idChild)
+  }   
 
   find (id){
      this.context.persons.findById(id);
@@ -55,7 +58,7 @@ class PersonController{
 
   list(criteria, compare){
     // criteria es el nombre de la propiedad por la cual se busca, compare, el valor que estoy buscando
-    return this.context.params.filter((element) => element[criteria] == compare);
+    return this.context.persons.filter((element) => element[criteria] == compare);
   }
 }  
 module.exports = PersonController;

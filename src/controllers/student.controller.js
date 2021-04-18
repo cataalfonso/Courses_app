@@ -21,6 +21,10 @@ class StudentController{
       this.context.students.update(id, item);
     }
 
+  updateChildId(id, child, idChild){
+      this.context.students.updateChildId(id, child, idChild)
+  }  
+
   find (id){
      this.context.students.findById(id);
    } 
