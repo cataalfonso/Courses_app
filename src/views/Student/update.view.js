@@ -35,6 +35,16 @@ class UpdateView {
         name: 'brthdate',
         message: "Ingrese fecha de nacimiento",
       },
+      {
+        type: 'input',
+        name: 'emergencyContactName',
+        message: "Ingrese nombre del contacto de emergencia",
+      },
+      {
+        type: 'input',
+        name: 'emergencyContactTel',
+        message: "Ingrese teléfono del contacto de emergencia",
+      },
     ];
   }
   index(){
