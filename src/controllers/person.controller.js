@@ -30,7 +30,7 @@ class PersonController {
   }
 
   get items() {
-    return this.context.persons;
+    return this.context._persons;
   }
 
   add(person) {

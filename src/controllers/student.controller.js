@@ -25,7 +25,7 @@ class StudentController{
   }
 
   get items(){
-    return this.context.students;
+    return this.context._students;
   }
   
   add(student) {

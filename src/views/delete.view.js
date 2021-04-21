@@ -17,7 +17,7 @@ class DeleteView {
     console.table(this.controller.items);
     inquirer.prompt(this.questions).then((answers) => {
       this.controller.remove(answers.id);
-      console.table(this.controller.items);
+      console.log(this.controller.items);
       console.log('Registro eliminado exitosamente');
     });
   }
