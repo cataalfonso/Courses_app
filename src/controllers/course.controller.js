@@ -3,6 +3,7 @@ const DeleteView = require('../views/delete.view');
 const NewView = require('../views/Course/new.view');
 const SearchView = require('../views/Course/search.view');
 const UpdateView = require('../views/Course/update.view');
+const Course = require('../models/course');
 
 
 class CourseController {
@@ -23,12 +24,15 @@ class CourseController {
   }
 
   get items(){
-    return this.context.courses;
+    return this.context._courses;
   }
 
   add(course) {
     if (course) {
-      this.context.courses.add(course);
+      let newCourse = new Course();
+      newCourse.name= course.name;
+      newCourse.duration= course.duration; 
+      this.context.courses.add(newCourse);
     }
   }
 
@@ -45,7 +49,6 @@ class CourseController {
   find(id) {
     this.context.courses.findById(id);
   }
-
 
   list(criteria, compare) {
     // criteria es el nombre de la propiedad por la cual se busca, compare, el valor que estoy buscando

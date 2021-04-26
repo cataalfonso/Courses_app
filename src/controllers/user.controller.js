@@ -19,7 +19,7 @@ class UserController {
   }
 
   get items(){
-    return this.context.users;
+    return this.context._users;
   }
 
   get students(){ //esta mal hecho que lo llame de aca?

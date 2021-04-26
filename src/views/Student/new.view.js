@@ -59,12 +59,31 @@ class NewView {
         message: "Ingrese teléfono del contacto de emergencia",
       },
     ];
+
+    this.enrollPrompt=[
+      {
+          type: 'confirm',
+          name: 'enroll',
+          message: "Desea inscribir a un curso?",
+          default: true,
+      }
+    ]
   }
+  
   index(){
     inquirer.prompt(this.addquestions).then((answers) => {
-      this.controller.add(answers);
+      let _item= this.controller.add(answers);
       console.table(this.controller.items);
       console.log('Registro agregado exitosamente');
+      this.enroll(_item.id);
+    });
+  }
+
+  enroll(studentId){
+    inquirer.prompt(this.enrollPrompt).then((answers) => {
+      if (answers.enroll){
+        this.controller.selectAction('Matricular', studentId);
+      }
     });
   }
 

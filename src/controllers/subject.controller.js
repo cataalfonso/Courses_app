@@ -1,4 +1,6 @@
 const CtxCourses = require('../context/ctx-courses');
+const Course = require('../models/course');
+const Subject = require('../models/subject');
 
 class SubjectController{
   constructor( ){
@@ -7,7 +9,15 @@ class SubjectController{
   
   add(subject) {
       if (subject) {
-        this.context.subjects.add(subject);
+        let newCourse =  new Course();
+        for (let key in newCourse){
+          newCourse[key]= subject[key]
+        }
+        newCourse = this.context.courses.add(newCourse);
+        let newSubject = new Subject();
+        newSubject.name= subject.name;
+        newSubject.course = newcourse;
+        this.context.subjects.add(newsubject);
       }
   }
   

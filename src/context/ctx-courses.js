@@ -15,6 +15,7 @@ class CtxCourses extends DbContext{
         this.persons = new DbSet();
         this.students = new DbSet();
         this.subjects = new DbSet();
+        this.courseXstudents= new DbSet();
         this.load();
     }
 }

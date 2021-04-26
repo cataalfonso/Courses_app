@@ -9,7 +9,7 @@ class StudentsView{
             type: 'rawlist',
             name: 'localOptions',
             message: 'Indique la operación que desea realizar:',
-            choices: ['Nuevo registro', 'Eliminar registro', 'Actualizar registro', 'Consultar'],
+            choices: ['Nuevo registro', 'Eliminar registro', 'Actualizar registro', 'Consultar','Matricular'],
           };
     }
 

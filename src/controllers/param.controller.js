@@ -3,6 +3,7 @@ const DeleteView = require('../views/delete.view');
 const NewView = require('../views/Params/new.view');
 const SearchView = require('../views/Params/search.view');
 const UpdateView = require('../views/Params/update.view');
+const Param = require('../models/param');
 
 class ParamController{
     constructor( ){
@@ -21,13 +22,17 @@ class ParamController{
     }
   
     get items(){
-      return this.context.params;
+      return this.context._params;
     }
   
     
     add(param) {
         if (param) {
-          this.context.params.add(param);
+          let newParam = new Param();
+          for (let key in newParam){
+            newParam[key] = param[key]; 
+          }
+          this.context.params.add(newParam);
         }
     }
     

@@ -1,12 +1,12 @@
 //poner en las vistas lo que tenga que preguntar para ingresar los datos
 // un controlador para varias vistas, y la vista debe ser muy sencilla. El controlador dice cual vista se muestra.
 
-const inquirer= require('inquirer');
+const inquirer = require('inquirer');
 
 class NewView {
 
   constructor(_controller) {
-    this.controller =_controller;
+    this.controller = _controller;
     this.addquestions = [
       {
         type: 'input',
@@ -20,14 +20,14 @@ class NewView {
       },
     ];
   }
-  index(){
+
+  index() {
     inquirer.prompt(this.addquestions).then((answers) => {
       this.controller.add(answers);
-      console.table(this.controller.items);
+      console.table(this.controller.items); // cómo hacer que imprima despues de agregar?
       console.log('Curso agregado exitosamente');
-    });
-  }
-
+  });
 }
 
+}
 module.exports = NewView;

@@ -4,7 +4,7 @@ class Subject{
 
     constructor() {
         this.name= '';
-        this.courseId= new Course()
+        this.course= new Course()
     }
 }
 module.exports = Subject;
