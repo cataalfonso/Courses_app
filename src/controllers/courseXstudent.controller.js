@@ -10,12 +10,10 @@ class CouserXstudentController{
     return this.context._courseXstudents;
   }
   
-  add(idS, idCourse) {
+  add(item) {
         let newEnroll={};
-        newEnroll.id_student= idS;
-        newEnroll.id_course= idCourse;
-        console.log(newEnroll);
-        console.log(this.context.courseXstudents);
+        newEnroll.id_student= item.id_student;
+        newEnroll.id_course= item.id_course;
         this.context.courseXstudents.add(newEnroll);
   }
   

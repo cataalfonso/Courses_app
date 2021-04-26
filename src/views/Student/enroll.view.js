@@ -11,6 +11,12 @@ class EnrollView {
     this.questions = [
       {
         type: 'input',
+        name: 'id_student',
+        message: "Confirme identificación del estudiante",
+        default: this.student,
+      },
+      {
+        type: 'input',
         name: 'id_course',
         message: "Ingrese el id de curso",
       },
@@ -20,7 +26,7 @@ class EnrollView {
   index(){
     console.table(this.courses.items);
     inquirer.prompt(this.questions).then((answers) => {
-      this.controller.add(this.student, answers.id_course);
+      this.controller.add(answers);
       console.table(this.controller.items);
       console.log('Registro actualizado exitosamente');
     });
