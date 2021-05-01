@@ -6,6 +6,25 @@ class DbContext {
         this.dbPath = dbPath;
     }
     
+    findKeyProp(element, props){
+        const propertyKeys = [];
+        const arrayPropertyKey = [];
+        for (let prop in element){
+            let property = prop+'s';
+            const childId = props.findIndex(item => item === property);
+            const arrayPropKeyIndex = props.findIndex(item => item === prop);
+            if (childId > -1){
+               propertyKeys.push({
+                   keyId: prop,
+                   property
+               });
+            }
+            if(arrayPropKeyIndex > -1){
+                arrayPropertyKey.push(keyId);
+            }
+        }
+        return [propertyKeys, arrayPropertyKey];
+    }
     load(){
         const props = Object.keys(this);
         for(var i = 0; i < props.length; i++){
@@ -15,19 +34,26 @@ class DbContext {
                 const path = `${this.dbPath}/${_entityName}.xml`;
                 const xmlHelper = new XmlHelper(path);
                 this[propName].push(...xmlHelper.xmlToJSON());
-                this['_'+propName] = this[propName].map((element) => {
-                    let newelement= {...element};
-                    for (let key in element){
-                        let property = key+'s';
-                        let childId= props.findIndex(item => item === property);
-                        if (childId > -1){
-                            let child = this[property].find(item => item.id === (element[key]));
-                            newelement[key]= child;
-                        }
+                let propertyKeys = [];
+                let arrayPropertyKey = [];
+                this['_'+propName] = this[propName].map((element, index) => {
+                    if(index === 0){
+                        [propertyKeys, arrayPropertyKey] = this.findKeyProp(elemen, props);
                     }
+                    let newelement= {...element};
+                    propertyKeys.forEach((propertyKey) => {
+                        const keyId = propertyKey.keyId;
+                        const property = propertyKey.property;
+                        let child = this[property].find(item => item.id === (element[keyId]));
+                        newelement[keyId]= child;
+                    });
+                    arrayPropertyKey.forEach((arrayPropertyKey) => {
+                        let childs = this[arrayPropertyKey].filter(item => item[propName] === (element["id"]));
+                        newelement[arrayPropertyKey]= childs;
+                    });
                     return newelement;
                 });  
-
+                console.log('_'+propName);
                 // buscar dentro de this.propname hacerle un map y por cada elemento buscar una propiedad 
                 //donde le concatene "s" y ese nombre tiene que existir donde props, si es verdadero, buscar el valor dentro de la prop con s (person-persons)
                 //asigno el valor, y lo devuelvo.
