@@ -6,6 +6,7 @@ class Student{
         this.person= new Person();
         this.emergencyContactName='';
         this.emergencyContactTel='';
+        this.grades=[]
 }
 }
 module.exports= Student;

@@ -20,13 +20,13 @@ class DbContext {
                });
             }
             if(arrayPropKeyIndex > -1){
-                arrayPropertyKey.push(keyId);
+                arrayPropertyKey.push(prop);
             }
         }
         return [propertyKeys, arrayPropertyKey];
     }
     load(){
-        const props = Object.keys(this);
+        const props = Object.keys(this).filter((key) => key[0] !== '_');
         for(var i = 0; i < props.length; i++){
             var propName = props[i];
             if(typeof this[propName] !== 'function' && typeof this[propName] !== 'string'){
@@ -38,7 +38,7 @@ class DbContext {
                 let arrayPropertyKey = [];
                 this['_'+propName] = this[propName].map((element, index) => {
                     if(index === 0){
-                        [propertyKeys, arrayPropertyKey] = this.findKeyProp(elemen, props);
+                        [propertyKeys, arrayPropertyKey] = this.findKeyProp(element, props);
                     }
                     let newelement= {...element};
                     propertyKeys.forEach((propertyKey) => {
@@ -52,8 +52,7 @@ class DbContext {
                         newelement[arrayPropertyKey]= childs;
                     });
                     return newelement;
-                });  
-                console.log('_'+propName);
+                }); 
                 // buscar dentro de this.propname hacerle un map y por cada elemento buscar una propiedad 
                 //donde le concatene "s" y ese nombre tiene que existir donde props, si es verdadero, buscar el valor dentro de la prop con s (person-persons)
                 //asigno el valor, y lo devuelvo.
@@ -76,6 +75,7 @@ class DbContext {
             }
            
         }
+        this.load();
     }
 }
 

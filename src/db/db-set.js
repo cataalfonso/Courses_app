@@ -6,6 +6,7 @@ class DbSet extends Array{
         this.save = null;
     }
     add(item){
+        console.log(item.constructor.name);
         let _item ={id: uuid.v4(), ...item}; 
         Object.keys(_item).forEach((element) => {
            if (typeof _item[element]==='object'){

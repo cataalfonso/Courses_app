@@ -1,13 +1,13 @@
-const inquirer= require('inquirer');
-const CourseController = require('../../controllers/course.controller');
+const inquirer = require('inquirer');
 const CouserXstudentController = require('../../controllers/courseXstudent.controller');
+
+const MSG_SAVED_SUCCESS = 'Registro actualizado exitosamente';
 
 class EnrollView {
 
-  constructor(_controller,_studentId) {
+  constructor(_studentId) {
     this.controller = new CouserXstudentController();
-    this.student= _studentId;
-    this.courses= new CourseController();
+    this.student = _studentId;
     this.questions = [
       {
         type: 'input',
@@ -23,15 +23,22 @@ class EnrollView {
     ];
   }
 
-  index(){
-    console.table(this.courses.items);
+
+  index() {
+    console.log('Estudiantes');
+    console.table(this.controller.students);
+    console.log('Cursos');
+    console.table(this.controller.courses);
     inquirer.prompt(this.questions).then((answers) => {
-      this.controller.add(answers);
-      console.table(this.controller.items);
-      console.log('Registro actualizado exitosamente');
+      try {
+        this.controller.add(answers);
+        console.table(this.controller.items);
+        console.log(MSG_SAVED_SUCCESS);
+      } catch (ex) {
+        console.log(ex);
+      }
     });
   }
-
 }
 
 module.exports = EnrollView;

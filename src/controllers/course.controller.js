@@ -24,7 +24,7 @@ class CourseController {
   }
 
   get items(){
-    return this.context._courses;
+    return this.context.courses;
   }
 
   add(course) {
@@ -47,7 +47,8 @@ class CourseController {
   }
 
   find(id) {
-    this.context.courses.findById(id);
+    return this.context.courses.findById(id);
+    
   }
 
   list(criteria, compare) {

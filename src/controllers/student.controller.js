@@ -21,7 +21,7 @@ class StudentController {
       case 'Eliminar registro': view = new DeleteView(this); break;
       case 'Actualizar registro': view = new UpdateView(this); break;
       case 'Consultar': view = new SearchView(this); break;
-      case 'Matricular': view = new EnrollView(this, studentId); break;
+      case 'Matricular': view = new EnrollView(studentId); break;
     }
     view.index();
   }
@@ -66,7 +66,7 @@ class StudentController {
 
 
   find(id) {
-    this.context.students.findById(id);
+    return this.context.students.findById(id);
   }
 
   list(criteria, compare) {
