@@ -69,9 +69,17 @@ class StudentController {
     return this.context.students.findById(id);
   }
 
+  findPersonbyId(id){
+    return this.context.persons.findById(id);
+  }
+
   list(criteria, compare) {
     // criteria es el nombre de la propiedad por la cual se busca, compare, el valor que estoy buscando
     return this.context.students.filter((element) => element[criteria] == compare);
+  }
+
+  listPersons(criteria, compare) {
+    return this.context.persons.filter((element) => element[criteria] == compare);
   }
 
 } 

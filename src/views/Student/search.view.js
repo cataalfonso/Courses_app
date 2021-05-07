@@ -50,13 +50,13 @@ class SearchView {
           break;
         case 'Nombre': // esta ya no funciona porque debe buscar en person
           inquirer.prompt(this.firstName).then((answers) => {
-            items = this.controller.list('firstName', answers.firstName);
+            items = this.controller.listPersons('firstName', answers.firstName);
             console.table(items);
           });
           break;
         case 'Apellido': // este ya no funciona porque debe buscar en person
           inquirer.prompt(this.lastName).then((answers) => {
-            items = this.controller.list('lastName', answers.lastName);
+            items = this.controller.listPersons('lastName', answers.lastName);
             console.table(items);
           });
           break;
