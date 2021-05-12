@@ -1,14 +1,13 @@
 const CtxCourses = require('../context/ctx-courses');
 const CourseController = require('./course.controller');
-const StudentController = require('./student.controller');
 
-const MSG_FIND_FAILED= 'Registro no encontrado'
+
+const MSG_FIND_FAILED= 'Registro no encontrado, ingrese los datos nuevamente'
 
 class CouserXstudentController{
   constructor( ){
       this.context= new CtxCourses();
       this.courseController= new CourseController();
-      this.studentController =  new StudentController();
   }    
 
   get items(){
@@ -41,7 +40,7 @@ class CouserXstudentController{
   }
 
   findStudentbyId(id){
-    return this.studentController.find(id);
+    return this.context.students.findById(id); //método repetido en student.controller
   }
   
   remove(id) {

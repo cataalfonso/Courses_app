@@ -36,6 +36,7 @@ class EnrollView {
         console.log(MSG_SAVED_SUCCESS);
       } catch (ex) {
         console.log(ex);
+        this.index();
       }
     });
   }

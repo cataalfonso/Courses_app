@@ -78,7 +78,7 @@ class StudentController {
     return this.context.students.filter((element) => element[criteria] == compare);
   }
 
-  listPersons(criteria, compare) {
+  listPersons(criteria, compare) {//falta que sean solo los id que sean estudiantes
     return this.context.persons.filter((element) => element[criteria] == compare);
   }
 
