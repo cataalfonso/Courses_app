@@ -51,13 +51,13 @@ class SearchView {
         case 'Nombre': 
           inquirer.prompt(this.firstName).then((answers) => {
             items = this.controller.listPersons('firstName', answers.firstName);
-            console.table(items);
+            console.log(items);
           });
           break;
         case 'Apellido': 
           inquirer.prompt(this.lastName).then((answers) => {
             items = this.controller.listPersons('lastName', answers.lastName);
-            console.table(items);
+            console.log(items);
           });
           break;
         

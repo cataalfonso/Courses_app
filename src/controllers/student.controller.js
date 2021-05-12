@@ -87,7 +87,10 @@ class StudentController {
     // devolverlas sólo si son estudiantes
     personas.forEach(element => {
       _studentList=(this.context.students.find((student)=> student.person === element.id));
-      studentList.push(_studentList);
+      if (_studentList){
+        _studentList.person={...element};
+        studentList.push(_studentList);
+      };  
     });
     return studentList;
   }
