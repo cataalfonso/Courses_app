@@ -48,13 +48,6 @@ class CouserXstudentController{
         this.context.courseXstudents.remove(id);
       }
     }
- 
-   list(criteria, compare){
-    // criteria es el nombre de la propiedad por la cual se busca, compare, el valor que estoy buscando
-    return this.context.courseXstudents.filter((element) => element[criteria] == compare);
-  }
-
- 
 
   }
 

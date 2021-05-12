@@ -75,11 +75,21 @@ class StudentController {
 
   list(criteria, compare) {
     // criteria es el nombre de la propiedad por la cual se busca, compare, el valor que estoy buscando
-    return this.context.students.filter((element) => element[criteria] == compare);
+    return this.context.students.filter((element) => element[criteria] ===compare);
   }
 
-  listPersons(criteria, compare) {//falta que sean solo los id que sean estudiantes
-    return this.context.persons.filter((element) => element[criteria] == compare);
+  listPersons(criteria, compare) {
+    //buscar personas que cumplen el criterio
+    let personas={};
+    personas= this.context.persons.filter((element) => element[criteria] === compare);
+    let _studentList={};
+    let studentList=[];
+    // devolverlas sólo si son estudiantes
+    personas.forEach(element => {
+      _studentList=(this.context.students.find((student)=> student.person === element.id));
+      studentList.push(_studentList);
+    });
+    return studentList;
   }
 
 } 
