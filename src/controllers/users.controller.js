@@ -4,6 +4,7 @@ const SearchView = require('../views/Course/search.view');
 const ParamView = require('../views/Params/param.view');
 const PersonView = require('../views/Person/person.view');
 const StudentsView = require('../views/Student/student.view');
+const SubjectView = require('../views/Subject/subject.view');
 const UserView = require('../views/user/user.view');
 const AdminView = require('../views/users/admin.view');
 const StudentView = require('../views/users/student.view');
@@ -54,7 +55,7 @@ class UsersController {
       case 'Pass-Reset': view = new CourseView(); break;
       case 'Profesores': view = new PersonView(); break;
       case 'Estudiantes': view = new StudentsView(); break;
-      case 'Materias': view = new CourseView(); break;
+      case 'Materias': view = new SubjectView(); break;
       case 'Usuarios': view = new UserView(); break;
       case 'Actualizar su perfil': view = new PersonView(); break;
     }

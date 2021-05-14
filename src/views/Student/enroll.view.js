@@ -1,7 +1,7 @@
 const inquirer = require('inquirer');
 const CouserXstudentController = require('../../controllers/courseXstudent.controller');
 
-const MSG_SAVED_SUCCESS = 'Registro actualizado exitosamente';
+const MSG_SAVED_SUCCESS = 'Registro guardado exitosamente';
 
 class EnrollView {
 
@@ -20,6 +20,7 @@ class EnrollView {
         name: 'id_course',
         message: "Ingrese el id de curso",
       },
+
     ];
   }
 

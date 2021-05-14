@@ -4,7 +4,7 @@ class Subject{
 
     constructor() {
         this.name= '';
-        this.course= new Course()
+        this.course= ''; // se quita new Courses(), sacaba error de referencia circular y una materia no genera un nuevo curso
     }
 }
 module.exports = Subject;

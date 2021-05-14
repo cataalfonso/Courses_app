@@ -24,7 +24,7 @@ class NewView {
   index() {
     inquirer.prompt(this.addquestions).then((answers) => {
       this.controller.add(answers);
-      console.table(this.controller.items); // cómo hacer que imprima despues de agregar?
+      console.table(this.controller.items); 
       console.log('Curso agregado exitosamente');
   });
 }
