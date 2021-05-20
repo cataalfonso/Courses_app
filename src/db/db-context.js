@@ -75,7 +75,7 @@ class DbContext {
             }
            
         }
-        this.load();
+        //this.load(); esto genera guardados dobles cuando tengo referencias a otras props
     }
 }
 
