@@ -6,7 +6,7 @@ class DbContext {
         this.dbPath = dbPath;
     }
     
-    findKeyProp(element, props){
+    findKeyProp(element, props){// tiene que ser recursiva
         const propertyKeys = [];
         const arrayPropertyKey = [];
         for (let prop in element){
@@ -49,13 +49,10 @@ class DbContext {
                     });
                     arrayPropertyKey.forEach((arrayPropertyKey) => {
                         let childs = this[arrayPropertyKey].filter(item => item[propName] === (element["id"]));
-                        newelement[arrayPropertyKey]= childs;
+                        newelement[arrayPropertyKey]= childs; //aca el mismo proceso con el child hasta que no devuelva nada
                     });
                     return newelement;
                 }); 
-                // buscar dentro de this.propname hacerle un map y por cada elemento buscar una propiedad 
-                //donde le concatene "s" y ese nombre tiene que existir donde props, si es verdadero, buscar el valor dentro de la prop con s (person-persons)
-                //asigno el valor, y lo devuelvo.
                 this[propName].save = this.save;
             }
         }
@@ -75,7 +72,6 @@ class DbContext {
             }
            
         }
-        //this.load(); esto genera guardados dobles cuando tengo referencias a otras props
     }
 }
 

@@ -53,7 +53,7 @@ class NewView {
   index(){
     inquirer.prompt(this.addquestions).then((answers) => {
       this.controller.add(answers);
-      console.table(this.controller.items);
+      console.log(this.controller.items);
       console.log('Registro agregado exitosamente');
     });
   }

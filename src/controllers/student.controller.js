@@ -44,12 +44,12 @@ class StudentController {
       newPerson.adress = student.adress;
       newPerson.birthDate = student.birthDate;
       newPerson.user = newUser;
-      newPerson = this.context.persons.add(newPerson);
+      newPerson = this.context.persons.add(newPerson, this.context._persons);
       let newStudent = new Student;
       newStudent.emergencyContactName = student.emergencyContactName;
       newStudent.emergencyContactTel = student.emergencyContactTel;
       newStudent.person = newPerson;
-      newStudent=this.context.students.add(newStudent);
+      newStudent=this.context.students.add(newStudent, this.context._students);
       return newStudent;
     }
   }

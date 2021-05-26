@@ -47,7 +47,7 @@ class PersonController {
       newPerson.adress = person.adress;
       newPerson.birthDate = person.birthDate;
       newPerson.user = newUser;
-      this.context.persons.add(newPerson);
+      this.context.persons.add(newPerson, this.context._persons);
     }
   }
 

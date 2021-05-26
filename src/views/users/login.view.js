@@ -26,6 +26,7 @@ class LoginView{
     }
 
     login(){
+        console.log('LOGIN');
         inquirer.prompt(this.questions).then((answers) => {
             try{
                 this.controller.loginUser(answers);

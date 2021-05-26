@@ -5,18 +5,21 @@ class DbSet extends Array{
         this.hasChanges = false;
         this.save = null;
     }
-    add(item){
+    add(item, _propName){
         console.log(item.constructor.name);
         let _item ={id: uuid.v4(), ...item}; 
+        if (_propName){
+            _propName.push(_item);
+        };
         Object.keys(_item).forEach((element) => {
            if (typeof _item[element]==='object'){
-               _item[element]=_item[element].id
+               _item[element]=_item[element].id 
            };
         });
         this.push(_item);
         this.hasChanges = true;
         this.save();
-        return _item;
+        return _item
     }
     remove(id){
         const index = this.findIndex(item => item.id === id);

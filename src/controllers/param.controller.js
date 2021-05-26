@@ -22,7 +22,7 @@ class ParamController{
     }
   
     get items(){
-      return this.context._params;
+      return this.context.params;
     }
   
     
