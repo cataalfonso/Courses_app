@@ -32,7 +32,7 @@ class GradeController{
   }
 
   filterCoursesByStudent(studentId) {
-    return this.context.courseXstudents.filter(item => item.id_student === studentId);
+    return this.context.courseXstudents.filter(item => item.student === studentId);
   }
 
   get students(){

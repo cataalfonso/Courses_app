@@ -23,7 +23,7 @@ class NewView {
 
   index() {
     console.log('Estudiantes y cursos');
-    console.table(this.controller.students);
+    console.log(this.controller.students);
     inquirer.prompt(this.studentPrompt).then((answers) => {
       let courses=this.controller.filterCoursesByStudent(answers.student);
       if (courses){

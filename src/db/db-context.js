@@ -1,5 +1,6 @@
 const XmlHelper = require("../utils/xml-helper");
 
+
 class DbContext {
     constructor(dbPath){
         this.save = this.save.bind(this);
@@ -26,7 +27,8 @@ class DbContext {
         return [propertyKeys, arrayPropertyKey];
     }
 
-    nested(newelement, props){
+    nested(sourceElement, props){
+        const newelement={...sourceElement};
         //console.log('elemento que evaluo',newelement)
         let propertyKeys = [];
         let arrayPropertyKey = [];
@@ -52,8 +54,7 @@ class DbContext {
                 //console.log('aqui')
                 return newelement;
             } else {
-              newelement[keyId]= this.nested(child, props);
-
+              newelement[keyId]= {...this.nested(child, props)};
             };
             };
         return newelement    
@@ -68,17 +69,18 @@ class DbContext {
                 const path = `${this.dbPath}/${_entityName}.xml`;
                 const xmlHelper = new XmlHelper(path);
                 this[propName].push(...xmlHelper.xmlToJSON());
-
-                
-                this['_'+propName] = this[propName].map((element, index) => {
-                    let newelement= this.nested(element, props);
-                    return newelement;   
+                                
+                this['_'+propName]=this[propName].map(element=>{
+                    return this.nested(element, props); 
                 }); 
-                //console.log('mi nuevo array', propName, this['_'+propName]);
+
+                console.log('mi nuevo array', propName, JSON.stringify(this['_'+propName]));
+                console.log('mi viejo array', propName, this[propName]);
                 this[propName].save = this.save;
-            }
-        }
-    }
+            
+        };
+    };
+}
 
     save(){
         const props = Object.keys(this);
