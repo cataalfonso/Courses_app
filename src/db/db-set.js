@@ -9,7 +9,7 @@ class DbSet extends Array{
         console.log(item.constructor.name);
         let _item ={id: uuid.v4(), ...item}; 
         if (_propName){
-            _propName.push(_item);
+            _propName.push(_item); // y el child?
         };
         Object.keys(_item).forEach((element) => {
            if (typeof _item[element]==='object'){

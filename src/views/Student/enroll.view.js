@@ -11,13 +11,13 @@ class EnrollView {
     this.questions = [
       {
         type: 'input',
-        name: 'id_student',
+        name: 'student',
         message: "Confirme identificación del estudiante",
         default: this.student,
       },
       {
         type: 'input',
-        name: 'id_course',
+        name: 'course',
         message: "Ingrese el id de curso",
       },
 

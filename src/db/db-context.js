@@ -6,7 +6,7 @@ class DbContext {
         this.dbPath = dbPath;
     }
     
-    findKeyProp(element, props){// tiene que ser recursiva
+    findKeyProp(element, props){
         const propertyKeys = [];
         const arrayPropertyKey = [];
         for (let prop in element){
@@ -25,6 +25,40 @@ class DbContext {
         }
         return [propertyKeys, arrayPropertyKey];
     }
+
+    nested(newelement, props){
+        console.log('elemento que evaluo',newelement)
+        let propertyKeys = [];
+        let arrayPropertyKey = [];
+        [propertyKeys, arrayPropertyKey] = this.findKeyProp(newelement, props);
+        console.log(propertyKeys);
+        console.log(arrayPropertyKey);
+        
+        arrayPropertyKey.forEach((arrayPropertyKey) => {
+            let childs = this[arrayPropertyKey].filter(item => item[propName] === (element["id"]));
+            newelement[arrayPropertyKey]= childs; 
+          });
+
+        for (let key in propertyKeys) {
+            const propertyKey=propertyKeys[key];
+            const keyId = propertyKey.keyId;
+            const property = propertyKey.property;
+            console.log('keyid', keyId);
+            console.log('property', property);
+            console.log('newelement', newelement);
+            let child = this[property].find(item => item.id === (newelement[keyId]));
+            console.log('el valor del child', child);
+            if (!child){
+                console.log('aqui')
+                return newelement;
+            } else {
+              newelement[keyId]= this.nested(child, props);
+
+            };
+            };
+        return newelement    
+    }
+
     load(){
         const props = Object.keys(this).filter((key) => key[0] !== '_');
         for(var i = 0; i < props.length; i++){
@@ -34,25 +68,13 @@ class DbContext {
                 const path = `${this.dbPath}/${_entityName}.xml`;
                 const xmlHelper = new XmlHelper(path);
                 this[propName].push(...xmlHelper.xmlToJSON());
-                let propertyKeys = [];
-                let arrayPropertyKey = [];
+
+                
                 this['_'+propName] = this[propName].map((element, index) => {
-                    if(index === 0){
-                        [propertyKeys, arrayPropertyKey] = this.findKeyProp(element, props);
-                    }
-                    let newelement= {...element};
-                    propertyKeys.forEach((propertyKey) => {
-                        const keyId = propertyKey.keyId;
-                        const property = propertyKey.property;
-                        let child = this[property].find(item => item.id === (element[keyId]));
-                        newelement[keyId]= child;
-                    });
-                    arrayPropertyKey.forEach((arrayPropertyKey) => {
-                        let childs = this[arrayPropertyKey].filter(item => item[propName] === (element["id"]));
-                        newelement[arrayPropertyKey]= childs; //aca el mismo proceso con el child hasta que no devuelva nada
-                    });
-                    return newelement;
+                    let newelement= this.nested(element, props);
+                    return newelement;   
                 }); 
+                console.log('mi nuevo array', propName, this['_'+propName]);
                 this[propName].save = this.save;
             }
         }

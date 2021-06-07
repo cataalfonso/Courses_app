@@ -24,11 +24,11 @@ class CouserXstudentController{
   
   add(item) {
         let newEnroll={};
-        let courseValidation= this.findCoursebyId(item.id_course);
-        let studentValidation= this.findStudentbyId(item.id_student);
+        let courseValidation= this.findCoursebyId(item.course);
+        let studentValidation= this.findStudentbyId(item.student);
         if (courseValidation && studentValidation){
-          newEnroll.id_course= item.id_course;
-          newEnroll.id_student= item.id_student;
+          newEnroll.course= item.course;
+          newEnroll.student= item.student;
           this.context.courseXstudents.add(newEnroll);
         } else {
           throw new Error(MSG_FIND_FAILED);
