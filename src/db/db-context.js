@@ -27,12 +27,12 @@ class DbContext {
     }
 
     nested(newelement, props){
-        console.log('elemento que evaluo',newelement)
+        //console.log('elemento que evaluo',newelement)
         let propertyKeys = [];
         let arrayPropertyKey = [];
         [propertyKeys, arrayPropertyKey] = this.findKeyProp(newelement, props);
-        console.log(propertyKeys);
-        console.log(arrayPropertyKey);
+        //console.log(propertyKeys);
+        //console.log(arrayPropertyKey);
         
         arrayPropertyKey.forEach((arrayPropertyKey) => {
             let childs = this[arrayPropertyKey].filter(item => item[propName] === (element["id"]));
@@ -43,13 +43,13 @@ class DbContext {
             const propertyKey=propertyKeys[key];
             const keyId = propertyKey.keyId;
             const property = propertyKey.property;
-            console.log('keyid', keyId);
-            console.log('property', property);
-            console.log('newelement', newelement);
+            //console.log('keyid', keyId);
+            //console.log('property', property);
+            //console.log('newelement', newelement);
             let child = this[property].find(item => item.id === (newelement[keyId]));
-            console.log('el valor del child', child);
+            //console.log('el valor del child', child);
             if (!child){
-                console.log('aqui')
+                //console.log('aqui')
                 return newelement;
             } else {
               newelement[keyId]= this.nested(child, props);
@@ -74,7 +74,7 @@ class DbContext {
                     let newelement= this.nested(element, props);
                     return newelement;   
                 }); 
-                console.log('mi nuevo array', propName, this['_'+propName]);
+                //console.log('mi nuevo array', propName, this['_'+propName]);
                 this[propName].save = this.save;
             }
         }
