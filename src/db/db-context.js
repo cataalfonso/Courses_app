@@ -74,8 +74,8 @@ class DbContext {
                     return this.nested(element, props); 
                 }); 
 
-                console.log('mi nuevo array', propName, JSON.stringify(this['_'+propName]));
-                console.log('mi viejo array', propName, this[propName]);
+                //console.log('mi nuevo array', propName, JSON.stringify(this['_'+propName]));
+                //console.log('mi viejo array', propName, this[propName]);
                 this[propName].save = this.save;
             
         };

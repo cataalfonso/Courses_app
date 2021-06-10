@@ -4,6 +4,7 @@ const NewView = require('../views/Grade/new.view');
 const SearchView = require('../views/Grade/search.view');
 const UpdateView = require('../views/Grade/update.view');
 
+const MSG_FIND_FAILED='Ingrese los datos nuevamente, no se encontró el registro'
 
 class GradeController{
 
@@ -31,12 +32,8 @@ class GradeController{
     return this.context._grades;
   }
 
-  filterCoursesByStudent(studentId) {
-    return this.context.courseXstudents.filter(item => item.student === studentId);
-  }
-
-  get students(){
-    return this.context.courseXstudents;
+  get _students(){
+    return this.context._students;
   }
 
   get subjects(){
@@ -62,6 +59,25 @@ class GradeController{
     find (id){
        this.context.grades.findById(id);
      } 
+
+     filterCoursesByStudent(studentId) {
+      let courses= this.context.courseXstudents.filter(item => item.student === studentId);
+      if (courses.lenght>0){
+        return courses.map(element=>{
+        element.course;
+      });
+      } else{
+        throw new Error(MSG_FIND_FAILED);
+      }
+    }
+
+    validateStudent(studentId){
+      let valid= this.context.students.find(item=>item.id===studentId);
+      if (valid){
+        
+      }
+      
+    }
    
     }
 

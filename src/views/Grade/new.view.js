@@ -23,14 +23,20 @@ class NewView {
 
   index() {
     console.log('Estudiantes y cursos');
-    console.log(this.controller.students);
+    console.log(JSON.stringify(this.controller._students,null,2));
     inquirer.prompt(this.studentPrompt).then((answers) => {
-      let courses=this.controller.filterCoursesByStudent(answers.student);
-      if (courses){
-        this.relateCourse(courses);
-      }else{
-        console.log('El estudiante no existe')
+      try {
+        this.controller.filterCoursesByStudent(answers.student);
+        console.log('Cursos del estudiante');
+        //console.log(courses);
+
+      } catch (ex) {
+        console.log(ex);
+       // this.index();
       }
+
+      
+      
       //this.controller.add(answers);
       //console.log('Coursos', this.controller.filterCoursesByStudent(answers.student));
       //console.table(this.controller.items); 
@@ -38,10 +44,6 @@ class NewView {
   });
 }
 
-  relateCourse(courses){
-    console.log('Cursos del estudiante');
-    console.table(courses);
-  }
 
 }
 module.exports = NewView;
