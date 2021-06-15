@@ -43,35 +43,66 @@ class NewView {
   }
 
   index() {
+    let itemGrade=[];
     console.log('Estudiantes y cursos');
     console.log(JSON.stringify(this.controller._students,null,2));
     inquirer.prompt(this.studentPrompt).then((answers) => {
-      try {
-        console.log('este es el id del estudiante', answers.student);
-        let enrolledCourses= this.controller.validateStudent(answers.student);
-        console.log('Cursos del estudiante');
-        console.log(enrolledCourses);
-        inquirer.prompt(this.coursePrompt).then((answers) => {
-          try{
-            let courseSubjects= this.controller.validateCourse(answers.course, enrolledCourses);
-            console.log('Materias');
-            console.log(courseSubjects);
-            inquirer.prompt(this.gradePrompt).then((answers) => {
-                this.controller.add(answers);
-                console.table(this.controller.items);
-                console.log(MSG_SAVED_SUCCESS);
-            }); 
-          } catch (ex){
-            console.log(ex);
-            //this.index();
-          };
-        });  
-      } catch (ex) {
-        console.log(ex);
-        this.index();
-      }
-
+        itemGrade.push(answers);
+        console.log('my array de respuestas ', itemGrade);
+        this.selectCourseByStudent(answers.student, itemGrade);
   });
+}
+
+selectCourseByStudent(studentId, itemGrade){
+  try{
+    //console.log('envio el id de estudiante', studentId);
+    let enrolledCourses= this.controller.validateStudent(studentId);
+    console.log('Cursos del estudiante');
+    console.log(enrolledCourses);
+    inquirer.prompt(this.coursePrompt).then((answers) => {
+      itemGrade.push(answers);
+      console.log('my array de respuestas ', itemGrade);
+      this.selectSubjectByCourse(answers.course, enrolledCourses, itemGrade);
+    });
+  } catch (ex) {
+    console.log(ex);
+    itemGrade.pop();
+    this.index();
+  }         
+}
+
+selectSubjectByCourse(courseId, courseList, itemGrade){
+  try{
+    let courseSubjects= this.controller.validateCourse(courseId, courseList);
+    console.log('Materias');
+    console.log(courseSubjects);
+    inquirer.prompt(this.subjectPrompt).then((answers) => {
+      itemGrade.push(answers);
+      console.log('my array de respuestas ', itemGrade);
+      this.enterGrade(answers.subject, courseSubjects, itemGrade)
+    }); 
+  } catch (ex){
+    console.log(ex);
+    itemGrade.pop();
+    //this.selectCourseByStudent(itemGrade);
+    this.index();
+  };
+}
+
+enterGrade(subjectId, subjectList, itemGrade){
+  try{
+  inquirer.prompt(this.gradePrompt).then((answers) => {
+    itemGrade.push(answers);
+    console.log('my array de respuestas ', itemGrade);
+    this.controller.add(itemGrade);
+    console.table(this.controller.items);
+    console.log(MSG_SAVED_SUCCESS);
+}); 
+  } catch(ex){
+    console.log(ex);
+    itemGrade.pop();
+    this.enterGrade(subjectId, subjectList, itemGrade);
+  }
 }
 
 

@@ -41,7 +41,9 @@ class GradeController{
     return this.context.subjects;
   }
     
-    add(grade) {
+  add(answers) {
+    let grade=JSON.parse(answers);
+    console.log(grade);
       if (grade) {
         let newGrade = new Grade();
         for (let key in newGrade){
@@ -66,25 +68,25 @@ class GradeController{
      } 
 
      filterCoursesByStudent(studentId) {
-      console.log('recibo id de estudiante para filtrar cursos', studentId); 
+      //console.log('recibo id de estudiante para filtrar cursos', studentId); 
       let courses= this.context.courseXstudents.filter(item => item.student === studentId);
-      console.log('course students filtrado', courses);
+      //console.log('course students filtrado', courses);
       if (courses.length>0){
-        console.log('encuentro cursos')
+        //console.log('encuentro cursos')
         return courses.map(element=>element.course);
       } else{
-        console.log('entro al error', courses.length);
+        //console.log('entro al error', courses.length);
         throw new Error(MSG_FIND_FAILED + ' no se encuentran cursos para el estudiante');
       };
     }
 
     validateStudent(studentId){
-      console.log('id que recibo', studentId);
+      //console.log('id que recibo', studentId);
       let valid= this.context.students.find(item=>item.id===studentId);
       console.log(valid);
       if (valid){
-        console.log('el id del estudiante es valido')
-        console.log('lo que devuelve la funcion de buscar cursos', this.filterCoursesByStudent(studentId));
+        //console.log('el id del estudiante es valido')
+        //console.log('lo que devuelve la funcion de buscar cursos', this.filterCoursesByStudent(studentId));
         return this.filterCoursesByStudent(studentId);
       } else{
         throw new Error(MSG_FIND_FAILED +' el estudiante no existe');
@@ -101,8 +103,9 @@ class GradeController{
     }
 
     
-    validateCourse(courseId, enrolledCourses){
-      let valid= enrolledCourses.find(item=>item===courseId);
+    validateCourse(courseId, courseList){
+      //console.log('este es el id de course a buscar', courseId);
+      let valid= courseList.find(item=>item===courseId);
       if (valid){
         return this.filterSubjectsByCourses(courseId);
       } else{
