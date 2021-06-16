@@ -27,7 +27,7 @@ class DbContext {
         return [propertyKeys, arrayPropertyKey];
     }
 
-    nested(sourceElement, props){
+    nested(sourceElement, props, propName){
         const newelement={...sourceElement};
         //console.log('elemento que evaluo',newelement)
         let propertyKeys = [];
@@ -37,7 +37,7 @@ class DbContext {
         //console.log(arrayPropertyKey);
         
         arrayPropertyKey.forEach((arrayPropertyKey) => {
-            let childs = this[arrayPropertyKey].filter(item => item[propName] === (element["id"]));
+            let childs = this[arrayPropertyKey].filter(item => item[propName] === (newelement["id"]));
             newelement[arrayPropertyKey]= childs; 
           });
 
@@ -71,7 +71,7 @@ class DbContext {
                 this[propName].push(...xmlHelper.xmlToJSON());
                                 
                 this['_'+propName]=this[propName].map(element=>{
-                    return this.nested(element, props); 
+                    return this.nested(element, props, propName); 
                 }); 
 
                 //console.log('mi nuevo array', propName, JSON.stringify(this['_'+propName]));

@@ -26,7 +26,7 @@ class GradeController{
 
 
   get items() {
-    return this.context.grades;
+    return this.context.grades.filter(element=> element.student != '' && element.student != null);
   }
 
   get _items() {
@@ -34,15 +34,21 @@ class GradeController{
   }
 
   get _students(){
-    return this.context._students;
+    return this.context._students.map( item=>{
+       let studentData={...item};
+       return {
+         id: studentData.id,
+         Nombre: studentData.person.firstName,
+         Apellido: studentData.person.lastName,
+       };
+    });
   }
 
   get subjects(){
     return this.context.subjects;
   }
     
-  add(answers) {
-    let grade=JSON.parse(answers);
+  add(grade) {
     console.log(grade);
       if (grade) {
         let newGrade = new Grade();
@@ -83,11 +89,11 @@ class GradeController{
     validateStudent(studentId){
       //console.log('id que recibo', studentId);
       let valid= this.context.students.find(item=>item.id===studentId);
-      console.log(valid);
+      //console.log(valid);
       if (valid){
         //console.log('el id del estudiante es valido')
         //console.log('lo que devuelve la funcion de buscar cursos', this.filterCoursesByStudent(studentId));
-        return this.filterCoursesByStudent(studentId);
+        return valid;
       } else{
         throw new Error(MSG_FIND_FAILED +' el estudiante no existe');
       };
