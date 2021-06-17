@@ -49,8 +49,7 @@ class SearchView {
             items = this.controller.list('student', answers.student);
             groups=this.controller.groupList('course', items);
             groups.forEach(element=>{
-              console.group();
-              console.log('course:', element);
+              console.group('course:', element);
               groupItems=items.filter((item)=>item.course === element);
               console.table(this.controller.shortenList('course', groupItems));
               console.groupEnd();
@@ -62,8 +61,7 @@ class SearchView {
             items = this.controller.list('course', answers.course);
             groups=this.controller.groupList('subject', items);
             groups.forEach(element=>{
-              console.group();
-              console.log('subject:', element);
+              console.group('subject:', element);
               groupItems=items.filter((item)=>item.subject === element);
               console.table(this.controller.shortenList('subject', groupItems));
               console.groupEnd();
@@ -75,8 +73,7 @@ class SearchView {
             items = this.controller.list('subject', answers.subject);
             groups=this.controller.groupList('student', items);
             groups.forEach(element=>{
-              console.group();
-              console.log('student:', element);
+              console.group('student:', element);
               groupItems=items.filter((item)=>item.student === element);
               console.table(this.controller.shortenList('student', groupItems));
               console.groupEnd();
