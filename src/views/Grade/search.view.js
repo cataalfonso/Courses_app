@@ -9,55 +9,78 @@ class SearchView {
       type: 'rawlist',
       name: 'criteria',
       message: "Elija el criterio por el que desea buscar",
-      choices: ["id", "name", "duration"]  
+      choices: ["student", "course", "subject"]  
     }];
 
-    this.id = [
+    this.student = [
       {
         type: 'input',
-        name: 'id',
+        name: 'student',
+        message: "Ingrese el id del estudiante",
+      },
+
+    ];
+
+    this.course = [
+      {
+        type: 'input',
+        name: 'course',
         message: "Ingrese el id del  curso",
       },
-
     ];
 
-    this.name = [
+    this.subject = [
       {
         type: 'input',
-        name: 'name',
-        message: "Ingrese el nombre del  curso",
-      },
-    ];
-
-    this.duration = [
-      {
-        type: 'input',
-        name: 'duration',
-        message: "Ingrese la duración del curso en meses",
+        name: 'subject',
+        message: "Ingrese el id de la materia",
       },
     ];
 
   }
   index(){
     let items = [];
+    let groups = [];
+    let groupItems = [];
     inquirer.prompt(this.choices).then((answers) => {
       switch (answers.criteria) {
-        case 'id':
-          inquirer.prompt(this.id).then((answers) => {
-            items = this.controller.list('id', answers.id);
-            console.table(items);
+        case 'student':
+          inquirer.prompt(this.student).then((answers) => {
+            items = this.controller.list('student', answers.student);
+            groups=this.controller.groupList('course', items);
+            groups.forEach(element=>{
+              console.group();
+              console.log('course:', element);
+              groupItems=items.filter((item)=>item.course === element);
+              console.table(this.controller.shortenList('course', groupItems));
+              console.groupEnd();
+            })
           });
           break;
-        case 'name':
-          inquirer.prompt(this.name).then((answers) => {
-            items = this.controller.list('name', answers.name);
-            console.table(items);
+        case 'course':
+          inquirer.prompt(this.course).then((answers) => {
+            items = this.controller.list('course', answers.course);
+            groups=this.controller.groupList('subject', items);
+            groups.forEach(element=>{
+              console.group();
+              console.log('subject:', element);
+              groupItems=items.filter((item)=>item.subject === element);
+              console.table(this.controller.shortenList('subject', groupItems));
+              console.groupEnd();
+            })
           });
           break;
-        case 'duration':
-          inquirer.prompt(this.duration).then((answers) => {
-            items = this.controller.list('duration', answers.duration);
-            console.table(items);
+        case 'subject':
+          inquirer.prompt(this.subject).then((answers) => {
+            items = this.controller.list('subject', answers.subject);
+            groups=this.controller.groupList('student', items);
+            groups.forEach(element=>{
+              console.group();
+              console.log('student:', element);
+              groupItems=items.filter((item)=>item.student === element);
+              console.table(this.controller.shortenList('student', groupItems));
+              console.groupEnd();
+            })
           });
           break;
         

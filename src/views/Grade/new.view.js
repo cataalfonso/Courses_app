@@ -36,7 +36,7 @@ class NewView {
         message: "Describa el concepto de la nota",
       },
       {
-        type: 'input',
+        type: 'number',
         name: 'value',
         message: "Ingrese el valor de la nota",
       },
