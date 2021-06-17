@@ -49,7 +49,7 @@ class GradeController{
   }
     
   add(grade) {
-    console.log(grade);
+    //console.log(grade);
       if (grade) {
         let newGrade = new Grade();
         for (let key in newGrade){
@@ -75,11 +75,17 @@ class GradeController{
 
      filterCoursesByStudent(studentId) {
       //console.log('recibo id de estudiante para filtrar cursos', studentId); 
-      let courses= this.context.courseXstudents.filter(item => item.student === studentId);
+      let courses= this.context._courseXstudents.filter(item => item.student.id === studentId);
       //console.log('course students filtrado', courses);
       if (courses.length>0){
         //console.log('encuentro cursos')
-        return courses.map(element=>element.course);
+        return courses.map( item=>{
+          let courseList={...item};
+          return {
+            id: courseList.course.id,
+            Nombre: courseList.course.name
+          };
+       });
       } else{
         //console.log('entro al error', courses.length);
         throw new Error(MSG_FIND_FAILED + ' no se encuentran cursos para el estudiante');
@@ -97,27 +103,37 @@ class GradeController{
       } else{
         throw new Error(MSG_FIND_FAILED +' el estudiante no existe');
       };
+    } 
+    
+    validateItem(itemId, itemList){
+      //console.log('este es el id de course a buscar', courseId);
+      let valid= itemList.find(item=>item.id===itemId);
+      if (valid){
+        return valid;
+      } else{
+        throw new Error(MSG_FIND_FAILED+' debe ingresar un id de la lista');
+      };
     }
+
+
 
     filterSubjectsByCourses(courseId) {
       let subjects= this.context.subjects.filter(item => item.course === courseId);
       if (subjects.length>0){
-        return subjects.map(element=>element.id);
-      } else{
+        return subjects.map( item=>{
+            let subjectList={...item};
+            return {
+              id: subjectList.id,
+              Nombre: subjectList.name
+            };
+          });   
+      } else {
         throw new Error(MSG_FIND_FAILED+ ' no se encuentran materias para el curso');
       };
     }
 
     
-    validateCourse(courseId, courseList){
-      //console.log('este es el id de course a buscar', courseId);
-      let valid= courseList.find(item=>item===courseId);
-      if (valid){
-        return this.filterSubjectsByCourses(courseId);
-      } else{
-        throw new Error(MSG_FIND_FAILED+' el estudiante no está matriculado en el curso o el curso no existe');
-      };
-    }
+  
    
     }
 
