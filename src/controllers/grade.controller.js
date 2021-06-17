@@ -117,7 +117,7 @@ class GradeController {
 
   remove(id) {
     if (id) {
-      this.grades.context.remove(id);
+      this.context.grades.remove(id);
     }
   }
 
