@@ -129,8 +129,17 @@ class GradeController {
     });
   }
 
-  update(id, item) {
-    this.grades.context.update(id, item);
+  update(item) {
+    let oldregister = this.items.filter(element=> element.id===item.id);
+    console.log(oldregister);
+    let updateGrade={};
+    updateGrade.student=oldregister[0].student;
+    updateGrade.subject=oldregister[0].subject;
+    updateGrade.course=oldregister[0].course;
+    updateGrade.concept = item.concept;
+    updateGrade.value = item.value;
+    console.log(updateGrade);
+    this.context.grades.update(item.id, updateGrade);
   }
 
   validateStudent(studentId) {

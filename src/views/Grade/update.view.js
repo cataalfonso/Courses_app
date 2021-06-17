@@ -8,26 +8,26 @@ class UpdateView {
       {
         type: 'input',
         name: 'id',
-        message: "Ingrese el id del  curso",
+        message: "Ingrese el id de la nota",
       },
       {
         type: 'input',
-        name: 'name',
-        message: "Ingrese el nombre del  curso",
+        name: 'concept',
+        message: "Describa el concepto de la nota",
       },
       {
-        type: 'input',
-        name: 'duration',
-        message: "Ingrese la duración del curso en meses",
+        type: 'number',
+        name: 'value',
+        message: "Ingrese el valor de la nota",
       },
     ];
   }
   index(){
     console.table(this.controller.items);
     inquirer.prompt(this.questions).then((answers) => {
-      this.controller.update(answers.id, answers);
+      this.controller.update(answers);
       console.table(this.controller.items);
-      console.log('Curso actualizado exitosamente');
+      console.log('Nota actualizada correctamente');
     });
   }
 
