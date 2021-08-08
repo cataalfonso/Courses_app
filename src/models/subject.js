@@ -1,11 +1,10 @@
 const Course = require("./course");
 
-function Subject(){
-}
-Subject.prototype = {
-    id: 0,
-    nombre: '',
-    cursoId: new Course()
-}
+class Subject{
 
+    constructor() {
+        this.name= '';
+        this.course= ''; // se quita new Courses(), sacaba error de referencia circular y una materia no genera un nuevo curso
+    }
+}
 module.exports = Subject;

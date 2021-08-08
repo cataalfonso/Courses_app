@@ -1,11 +1,10 @@
 const User = require("./user");
 
-function PassReset(){
-}
-PassReset.prototype = {
-    id: 0,
-    userId: new User(),
-    token: ''
-}
+class PassReset{
 
+    constructor(){
+        this.userId= new User();
+        this.token= '';
+}
+}
 module.exports = PassReset;

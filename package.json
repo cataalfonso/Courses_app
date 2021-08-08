@@ -1,15 +1,20 @@
 {
-  "name": "cursos",
+  "name": "courses_app",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "serve": "node src/index.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://archetypees@dev.azure.com/archetypees/Archetype%20-%20JS%20Development%20Training/_git/courses_app"
+  },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "gulp": "^4.0.2",
+    "inquirer": "^8.0.0",
     "uuid": "^8.3.2"
   }
 }

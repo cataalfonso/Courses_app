@@ -11,10 +11,11 @@ class CtxCourses extends DbContext{
         this.grades = new DbSet();
         this.params = new DbSet();
         this.passResets = new DbSet();
+        this.users = new DbSet();
         this.persons = new DbSet();
         this.students = new DbSet();
         this.subjects = new DbSet();
-        this.users = new DbSet();
+        this.courseXstudents= new DbSet();
         this.load();
     }
 }

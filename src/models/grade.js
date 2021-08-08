@@ -2,15 +2,15 @@ const Course = require("./course");
 const Student = require("./student");
 const Subject = require("./subject");
 
-function Grade(){
+class Grade {
+
+    constructor(){
+    this.student= '';
+    this.subject= '';
+    this.course= '';
+    this.concept= '';
+    this.value= 0;
 }
-Grade.prototype = {
-    id: 0,
-    student: new Student(),
-    subject: new Subject(),
-    course: new Course,
-    concepto: '',
-    valor: 0
 }
 
 module.exports = Grade;
